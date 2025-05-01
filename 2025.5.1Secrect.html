@@ -171,11 +171,12 @@
         .close-btn {
             margin-top: 20px; /* 向下移动按钮 */
         }
+
     </style>
 </head>
 <body>
-      
-      <!-- 隐藏音频播放器控件，并自动播放 -->
+
+  <!-- 隐藏音频播放器控件，并自动播放 -->
   <audio id="myAudio" autoplay muted hidden>
     <source src="https://ting8.yymp3.com/new21/guangchangwu/18.mp3" type="audio/mp3">
     您的浏览器不支持音频播放。
@@ -221,12 +222,21 @@
           const modal = document.getElementById('modal');
           const modalContent = document.querySelector('.modal-content');
           const errorMessage = document.getElementById('error-message');
+          const audio = document.getElementById('myAudio');
 
           if (key === correctKey) {
               // 显示弹窗并添加动画效果
               modal.classList.add('visible');
               modalContent.classList.add('visible');
               errorMessage.textContent = ''; // 清空错误信息
+
+              // 播放音频
+              audio.play().then(function() {
+                  // 播放成功，解除静音
+                  audio.muted = false;
+              }).catch(function(error) {
+                  console.log("自动播放失败，原因:", error);
+              });
           } else {
               // 错误提示：调侃风格
               errorMessage.textContent = "嘿，这个密钥专属某人可见啦，哈哈哈😏";
@@ -253,8 +263,4 @@
   </script>
 
 </body>
-
 </html>
-
-
-
