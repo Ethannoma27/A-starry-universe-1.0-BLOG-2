@@ -174,20 +174,26 @@
     </style>
 </head>
 <body>
-    <audio id="myAudio" autoplay hidden>
-        <source src="https://ting8.yymp3.com/new21/guangchangwu/18.mp3" type="audio/mp3">
-        您的浏览器不支持音频播放。
-    </audio>
-    
-    <script>
-        // 延迟播放，避免自动播放被阻止
-        setTimeout(function() {
-            var audio = document.getElementById('myAudio');
-            audio.play().catch(function(error) {
-                console.log("播放音频失败:", error);
-            });
-        }, 100); // 延迟100ms尝试播放
-    </script> 
+      
+      <!-- 隐藏音频播放器控件，并自动播放 -->
+  <audio id="myAudio" autoplay muted hidden>
+    <source src="https://ting8.yymp3.com/new21/guangchangwu/18.mp3" type="audio/mp3">
+    您的浏览器不支持音频播放。
+</audio>
+
+<script>
+    window.onload = function() {
+        var audio = document.getElementById('myAudio');
+
+        // 播放音频后，解除静音
+        audio.play().then(function() {
+            // 播放成功，解除静音
+            audio.muted = false;
+        }).catch(function(error) {
+            console.log("自动播放失败，原因:", error);
+        });
+    };
+</script> 
 
   <div class="container">
       <h2>请输入密钥来解锁内个谁的表白</h2>
@@ -249,7 +255,6 @@
 </body>
 
 </html>
-
 
 
 
