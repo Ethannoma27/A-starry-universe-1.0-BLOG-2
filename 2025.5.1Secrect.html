@@ -175,92 +175,96 @@
     </style>
 </head>
 <body>
+            <!-- 隐藏音频播放器控件，并自动播放 -->
+    <audio id="myAudio" autoplay muted hidden>
+        <source src="https://ting8.yymp3.com/new21/guangchangwu/18.mp3" type="audio/mp3">
+        您的浏览器不支持音频播放。
+    </audio>
 
-  <!-- 隐藏音频播放器控件，并自动播放 -->
-  <audio id="myAudio" autoplay muted hidden>
-    <source src="https://ting8.yymp3.com/new21/guangchangwu/18.mp3" type="audio/mp3">
-    您的浏览器不支持音频播放。
-</audio>
+    <script>
+        window.onload = function() {
+            var audio = document.getElementById('myAudio');
 
-<script>
-    window.onload = function() {
-        var audio = document.getElementById('myAudio');
+            // 播放音频后，解除静音
+            audio.play().then(function() {
+                // 播放成功，解除静音
+                audio.muted = false;
+            }).catch(function(error) {
+                console.log("自动播放失败，原因:", error);
+            });
+        };
 
-        // 播放音频后，解除静音
-        audio.play().then(function() {
-            // 播放成功，解除静音
-            audio.muted = false;
-        }).catch(function(error) {
-            console.log("自动播放失败，原因:", error);
-        });
-    };
-</script> 
+        // 密钥的 Base64 编码
+        const encodedKey = "MTIwNTI1";  // Base64 编码 
 
-  <div class="container">
-      <h2>请输入密钥来解锁内个谁的表白</h2>
-      <input type="text" id="key" class="input-box" placeholder="请输入密钥...">
-      <button class="btn" onclick="checkKey()"><span>确认</span></button>
-      <div id="error-message" class="error-message"></div> <!-- 错误提示位置 -->
-  </div>
+        function checkKey() {
+            const key = document.getElementById('key').value;
+            const modal = document.getElementById('modal');
+            const modalContent = document.querySelector('.modal-content');
+            const errorMessage = document.getElementById('error-message');
+            const audio = document.getElementById('myAudio');
 
-  <!-- 弹窗 -->
-  <div id="modal" class="modal">
-      <div class="modal-content">
-          <h3>她的表白：</h3>
-          <p>"最好的年纪遇见了你，你在我心里占据了最重要的位置，</p>
-          <p> 我的爱将伴随一生。"</p>
-          <div class="heart">❤️</div>
-          <button class="close-btn" onclick="closeModal()">我懂了</button>
-      </div>
-  </div>
+            // 解码 Base64 密钥
+            const decodedKey = atob(encodedKey);  // atob() 用于解码 Base64 字符串
 
-  <script>
-      const correctKey = "120525"; // 替换为你想要的密钥
+            if (key === decodedKey) {
+                // 显示弹窗并添加动画效果
+                modal.classList.add('visible');
+                modalContent.classList.add('visible');
+                errorMessage.textContent = ''; // 清空错误信息
 
-      function checkKey() {
-          const key = document.getElementById('key').value;
-          const modal = document.getElementById('modal');
-          const modalContent = document.querySelector('.modal-content');
-          const errorMessage = document.getElementById('error-message');
-          const audio = document.getElementById('myAudio');
+                // 播放音频
+                audio.play().then(function() {
+                    // 播放成功，解除静音
+                    audio.muted = false;
+                }).catch(function(error) {
+                    console.log("自动播放失败，原因:", error);
+                });
 
-          if (key === correctKey) {
-              // 显示弹窗并添加动画效果
-              modal.classList.add('visible');
-              modalContent.classList.add('visible');
-              errorMessage.textContent = ''; // 清空错误信息
+            } else {
+                // 错误提示：调侃风格
+                errorMessage.textContent = "嘿，这个密钥专属某人可见啦，哈哈哈😏";
+                errorMessage.classList.add('shake');
+                // 给输入框添加摇晃动画
+                document.querySelector('.input-box').classList.add('shake');
+                setTimeout(() => {
+                    document.querySelector('.input-box').classList.remove('shake');
+                }, 500);
+                // 让错误信息渐变显示
+                setTimeout(() => {
+                    errorMessage.classList.remove('shake');
+                }, 3000);
+            }
+        }
 
-              // 播放音频
-              audio.play().then(function() {
-                  // 播放成功，解除静音
-                  audio.muted = false;
-              }).catch(function(error) {
-                  console.log("自动播放失败，原因:", error);
-              });
-          } else {
-              // 错误提示：调侃风格
-              errorMessage.textContent = "嘿，这个密钥专属某人可见啦，哈哈哈😏";
-              errorMessage.classList.add('shake');
-              // 给输入框添加摇晃动画
-              document.querySelector('.input-box').classList.add('shake');
-              setTimeout(() => {
-                  document.querySelector('.input-box').classList.remove('shake');
-              }, 500);
-              // 让错误信息渐变显示
-              setTimeout(() => {
-                  errorMessage.classList.remove('shake');
-              }, 3000);
-          }
-      }
+        // 关闭弹窗
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            const modalContent = document.querySelector('.modal-content');
+            modal.classList.remove('visible');
+            modalContent.classList.remove('visible');
+        }
+    </script>
+  
+    <div class="container">
+        <h2>请输入密钥来解锁内个谁的表白</h2>
+        <input type="text" id="key" class="input-box" placeholder="请输入密钥...">
+        <button class="btn" onclick="checkKey()"><span>确认</span></button>
+        <div id="error-message" class="error-message"></div> <!-- 错误提示位置 -->
+    </div>
 
-      // 关闭弹窗
-      function closeModal() {
-          const modal = document.getElementById('modal');
-          const modalContent = document.querySelector('.modal-content');
-          modal.classList.remove('visible');
-          modalContent.classList.remove('visible');
-      }
-  </script>
-
+    <!-- 弹窗 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3>她的表白：</h3>
+            <p>"最好的年纪遇见了你，你在我心里占据了最重要的位置，</p>
+            <p> 我的爱将伴随一生。"</p>
+            <div class="heart">❤️</div>
+            <button class="close-btn" onclick="closeModal()">我懂了</button>
+        </div>
+    </div>
 </body>
-</html>
+</html> 
+
+
+
