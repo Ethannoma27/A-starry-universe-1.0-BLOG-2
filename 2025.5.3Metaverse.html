@@ -215,12 +215,10 @@
     </style>
 </head>
 <body>
-
-    <audio id="myAudio" autoplay muted preload="metadata" hidden>
-        <source src="mp3/meteorshower1.mp3" type="audio/mp3">
+    <audio id="myAudio" autoplay muted preload="auto" hidden>
+        <source src="mp3/meteorshower1.mp3?v=1.0" type="audio/mp3">
         您的浏览器不支持音频播放。
-
-    </audio>
+    </audio> 
         
 
     <div class="container">
@@ -255,21 +253,31 @@
     </div>
 
     <script>
-        window.onload = function() {
-  var audio = document.getElementById('myAudio');
-  audio.src = 'mp3/meteorshower1.mp3';  // 设置音频源为MP3 
+      window.onload = function() {
+        var audio = document.getElementById('myAudio');
 
-  // 尝试播放音频
-  audio.play().then(function() {
-    // 播放成功，解除静音
-    audio.muted = false;
-    console.log("音频自动播放并解除静音");
-  }).catch(function(error) {
-    // 如果自动播放失败
-    console.log("自动播放失败，原因:", error);
-  });
-};
- 
+        // 等待音频能够完全播放
+        audio.oncanplaythrough = function() {
+            audio.play().then(function() {
+                audio.muted = false; // 解除静音
+                console.log("音频自动播放并解除静音");
+            }).catch(function(error) {
+                console.log("自动播放失败，原因:", error);
+            });
+        };
+    };
+
+    function heartClick() {
+        var audio = document.getElementById('myAudio');
+        if (audio.paused) {
+            audio.play().then(function() {
+                audio.muted = false;
+                console.log("音频播放中...");
+            }).catch(function(error) {
+                console.log("播放失败，原因:", error);
+            });
+        }
+    }
         // 点击爱心触发动画
         function heartClick() {
             const effect = document.getElementById('loveEffect'); 
@@ -341,8 +349,6 @@
     </script> 
 </body>
 </html>
-
-
 
 
 
