@@ -255,17 +255,20 @@
     </div>
 
     <script>
-             window.onload = function() {
-        var audio = document.getElementById('myAudio');
+        window.onload = function() {
+            var audio = document.getElementById('myAudio');
+            
+            // 尝试直接播放音频，避免交互触发
+            audio.play().then(() => {
+                console.log("音频自动播放成功！");
+            }).catch(function(error) {
+                console.log("自动播放失败，原因:", error);
+            });
+        };
         
-        // 直接尝试播放音频
-        audio.play().catch(function(error) {
-            console.log("自动播放失败，原因:", error);
-        });
-    };
         // 点击爱心触发动画
         function heartClick() {
-            const effect = document.getElementById('loveEffect');
+            const effect = document.getElementById('loveEffect'); 
             effect.style.opacity = 1;
 
             // 创建爱心扩散效果
@@ -331,9 +334,10 @@
             }
 
             setInterval(createStar, 50);
-        </script> 
-    </body>
+    </script> 
+</body>
 </html>
+
 
 
 
