@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我爱她的宇宙</title>
+    <title>爱你的元宇宙</title>
     <style>
         /* 基本布局 */
         body, html {
@@ -216,11 +216,11 @@
 </head>
 <body>
 
-    <!-- 隐藏音频播放器控件，并自动播放 -->
+     <!-- 隐藏音频播放器控件，并自动播放 -->
      <audio id="myAudio" autoplay muted hidden>
-     <source src="https://ting8.yymp3.com/new15/jmbjygar/9.mp3" type="audio/mp3">
-                    您的浏览器不支持音频播放。
-     </audio>
+        <source src="https://ting8.yymp3.com/new15/jmbjygar/9.mp3" type="audio/mp3">
+        您的浏览器不支持音频播放。
+    </audio>
 
     <div class="container">
         <!-- 背景星空 -->
@@ -254,19 +254,21 @@
     </div>
 
     <script>
-         window.onload = function() {
+            window.onload = function() {
             var audio = document.getElementById('myAudio');
 
-            // 播放音频后，解除静音
+            // 先播放静音音频，等待播放后再解除静音
             audio.play().then(function() {
-
-                // 播放成功，解除静音
+                // 播放成功后解除静音
                 audio.muted = false;
             }).catch(function(error) {
                 console.log("自动播放失败，原因:", error);
+                // 如果自动播放失败，尝试通过页面事件重新启动音频
+                document.body.addEventListener('click', function() {
+                    audio.play();
+                });
             });
         };
-
         // 点击爱心触发动画
         function heartClick() {
             const effect = document.getElementById('loveEffect');
