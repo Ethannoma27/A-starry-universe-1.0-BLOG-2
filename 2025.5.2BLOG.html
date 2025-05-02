@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>乘风2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&family=Dancing+Script&family=Roboto:wght@400;500&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <style>
+
+/* 页面基础样式 */ 
+body {
+font-family: 'Roboto', sans-serif;
+margin: 0;
+padding: 0;
+text-align: center;
+background: linear-gradient(to bottom, #a8c0ff, #e0eafc);
+color: #333;
+background-image: url('https://imgs.699pic.com/images/501/020/783.jpg!seo.v1'); /* 替换背景图 */ 
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+position: relative;
+}
+
+
+        /* 容器包裹整个页面 */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding-top: 0;
+        }
+
+/* 页眉样式 */
+header {
+    width: 100%;
+    background: linear-gradient(to right, rgba(110, 127, 203, 0.7), rgba(75, 139, 255, 0.7)); /* 设置蓝色渐变，并增加透明度 */
+    padding: 10.935px 15px; /* 将垂直内边距再减少10% */ 
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    position: relative;
+}
+
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.4em; /* 适当减少字体大小 */
+    margin: 0;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+        p {
+            font-size: 1.4em; /* 稍微增大文字 */
+            margin-top: 8px; /* 缩小文本和标题之间的距离 */
+            color: #fff;
+        }
+
+        /* 内容区域 */
+        .content {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 18px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 视频部分的外部容器 */
+        .video-wrapper {
+            width: 100%;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .video-background {
+            position: relative;
+            width: 100%;
+            padding-top: 40%;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 0;
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5));
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0;
+        }
+
+        /* 文字内容部分 */
+.text-wrapper {
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+                            /* 优化文字内容的字体样式 */
+.text-wrapper p {
+    font-family: 'Roboto Slab', serif; /* 强调力量感的字体 */
+    font-size: 1.5em; /* 增加字体大小 */
+    margin-top: 12px;
+    color: #34495e; /* 青蓝色，稍微明亮且更有活力感 */
+    line-height: 1.8; /* 增加行间距，提升阅读舒适度 */
+    text-align: justify; /* 使文字两端对齐，提升视觉效果 */
+    font-weight: 600; /* 使用较粗的字重，突出力量感 */
+}
+
+/* 优化段落之间的间距 */
+.text-wrapper p + p {
+    margin-top: 10px; /* 增加段落间距 */
+}
+
+/* 增加文字阴影，增强视觉冲击力 */
+.text-wrapper p {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2), 0 0 15px rgba(52, 152, 219, 0.3); /* 调整为更明亮的蓝色阴影 */
+}
+
+
+
+        /* 页脚样式 */
+        footer {
+            width: 100%;
+            background-color: #6e7fcb;
+            color: white;
+            padding: 18px 20px;
+            font-size: 1em;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* 响应式布局 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.4em;
+            }
+
+            .content {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .video-wrapper {
+                margin-bottom: 20px;
+            }
+
+            .video-background {
+                max-width: 100%;
+                padding-top: 56.25%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .video-wrapper {
+                margin-bottom: 15px;
+            }
+
+            .video-background {
+                max-width: 100%;
+                padding-top: 56.25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <h1>放手去做，超越自我</h1>
+        <p>这部影片点燃了我们的勇气，教会我们如何放下恐惧，突破局限</p>
+    </header>    
+
+    <div class="content">
+        <!-- 视频容器 -->
+        <div class="video-wrapper">
+            <div class="video-background">
+                <div class="video-container" id="video-container">
+                    <iframe src="https://player.bilibili.com/player.html?bvid=BV1Zp4y1X7z9&autoplay=1&muted=1" frameborder="0" allowfullscreen="true" id="videoFrame"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 文字内容部分 -->
+        <div class="text-wrapper">
+            <p>《最強激勵影片 - 放手去做》提醒我们：面对生活中的挑战，负面情绪和自我怀疑常常让我们停滞不前。影片的核心是鼓励我们放下这些思想，勇敢追求梦想。</p>
+            <p>每一个成功背后都有无数的失败与挑战，只有坚持不放弃的人，才能最终看到属于自己的辉煌。</p>
+            <p>放手去做，敢于突破极限，成就最好的自己。</p>
+        </div>
+    </div>
+
+    <!-- 页脚部分 -->
+    <footer>
+        <p>© 2025 《放手去做》页面背景风格 | 由 Epochfuture 团队制作</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            var iframe = document.getElementById('videoFrame');
+            iframe.onload = function() {
+                var iframeWindow = iframe.contentWindow;
+
+                // 等待iframe加载完成后，发送解除静音指令
+                setTimeout(function() {
+                    var message = {
+                        method: 'setVolume',
+                        params: [1.0] // 设置音量为100%
+                    };
+                    iframeWindow.postMessage(JSON.stringify(message), '*');
+                }, 1000); // 延迟发送指令，确保播放器初始化完成
+            };
+        };
+    </script>
+
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+
