@@ -216,11 +216,11 @@
 </head>
 <body>
 
-               <!-- 隐藏音频播放器控件，并自动播放 -->
-               <audio id="myAudio" autoplay muted preload="auto" hidden>
-                <source src="https://ting8.yymp3.com/new15/jmbjygar/9.mp3" type="audio/mp3">
-                您的浏览器不支持音频播放。
-            </audio>
+            <!-- 隐藏音频播放器控件，并自动播放 -->
+         <audio id="myAudio" autoplay muted preload="auto" hidden>
+            <source src="https://ting8.yymp3.com/new15/jmbjygar/9.mp3" type="audio/mp3">
+            您的浏览器不支持音频播放。
+        </audio>
         
 
     <div class="container">
@@ -255,12 +255,14 @@
     </div>
 
     <script>
-       window.onload = function() {
+        window.onload = function() {
             var audio = document.getElementById('myAudio');
             
-            // 确保音频静音并自动播放
-            audio.play().then(() => {
-                console.log("音频自动播放成功！");
+            // 尝试播放音频
+            audio.play().then(function() {
+                // 播放成功，解除静音
+                audio.muted = false;
+                console.log("音频自动播放并解除静音");
             }).catch(function(error) {
                 console.log("自动播放失败，原因:", error);
             });
