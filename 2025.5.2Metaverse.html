@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>爱你的宇宙</title>
+    <title>爱你的元宇宙</title>
     <style>
         /* 基本布局 */
         body, html {
@@ -255,19 +255,17 @@
     </div>
 
     <script>
-     window.onload = function() {
-        var audio = document.getElementById('myAudio');
+      window.onload = function() {
+            var audio = document.getElementById('myAudio');
 
-        // 尝试播放音频并解除静音
-        audio.play().then(function() {
-            // 延迟解除静音，确保音频能正常播放
-            setTimeout(function() {
-                audio.muted = false;  // 播放成功后解除静音
-            }, 500);  // 延迟解除静音，防止某些浏览器限制
-        }).catch(function(error) {
-            console.log("自动播放失败，原因:", error);
-        });
-    };
+            // 播放音频后，解除静音
+            audio.play().then(function() {
+                // 播放成功，解除静音
+                audio.muted = false;
+            }).catch(function(error) {
+                console.log("自动播放失败，原因:", error);
+            });
+        }; 
 
         // 点击爱心触发动画
         function heartClick() {
