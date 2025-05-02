@@ -255,24 +255,28 @@
     <script>
   window.onload = function() {
     var audio = document.getElementById('myAudio');
-    audio.preload = "auto";  // 确保音频提前加载
+    audio.preload = "auto";  // 提前加载音频
 
-    // 设置一个标记来确保只播放一次
-    if (!audio.hasPlayed) {
-        audio.hasPlayed = true;  // 设置标记
+    // 确保音频可以播放（监听 canplaythrough 事件，表示音频加载完毕）
+    audio.addEventListener('canplaythrough', function() {
+        // 设置一个标记来确保只播放一次
+        if (!audio.hasPlayed) {
+            audio.hasPlayed = true;  // 设置标记
 
-        setTimeout(function() {
             audio.play().then(function() {
                 audio.muted = false; // 解除静音
                 console.log("音频自动播放并解除静音");
             }).catch(function(error) {
                 console.log("自动播放失败，原因:", error);
             });
-        }, 500); // 延迟500ms播放音频
-    } else {
-        console.log("音频已经播放过，跳过");
-    }
+        } else {
+            console.log("音频已经播放过，跳过");
+        }
+    });
+
+    // 如果音频无法自动播放（防止某些浏览器限制），可以考虑通过用户交互来触发播放。
 };
+
 
         // 点击爱心触发动画
         function heartClick() {
