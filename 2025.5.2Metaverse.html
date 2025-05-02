@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>爱你的元宇宙</title>
+    <title>我爱她的宇宙</title>
     <style>
         /* 基本布局 */
         body, html {
@@ -208,7 +208,7 @@
   }
   100% {
     opacity: 0;
-    transform: scaleX(2);  /* 让尾巴变得更自然 */
+    transform: scaleX(3);  /* 更大倍数，让尾巴显得更自然 */
   }
 }
 
@@ -216,12 +216,11 @@
 </head>
 <body>
 
-
-  <!-- 隐藏音频播放器控件，并自动播放 -->
-    <audio id="myAudio" autoplay muted hidden>
-    <source src="https://ting8.yymp3.com/new15/jmbjygar/9.mp3" type="audio/mp3">
-      您的浏览器不支持音频播放。
- </audio>
+    <!-- 隐藏音频播放器控件，并自动播放 -->
+     <audio id="myAudio" autoplay muted hidden>
+     <source src="https://ting8.yymp3.com/new15/jmbjygar/9.mp3" type="audio/mp3">
+                    您的浏览器不支持音频播放。
+     </audio>
 
     <div class="container">
         <!-- 背景星空 -->
@@ -255,16 +254,18 @@
     </div>
 
     <script>
-          window.onload = function() {
-        var audio = document.getElementById('myAudio');
+         window.onload = function() {
+            var audio = document.getElementById('myAudio');
 
-        // 自动播放并解除静音
-        audio.play().then(function() {
-            audio.muted = false;  // 播放成功后解除静音
-        }).catch(function(error) {
-            console.log("自动播放失败，原因:", error);
-        });
-    };
+            // 播放音频后，解除静音
+            audio.play().then(function() {
+
+                // 播放成功，解除静音
+                audio.muted = false;
+            }).catch(function(error) {
+                console.log("自动播放失败，原因:", error);
+            });
+        };
 
         // 点击爱心触发动画
         function heartClick() {
@@ -336,13 +337,14 @@
             setInterval(createStar, 50);
         </script> 
     </body>
-
-
-
-
-
-
 </html>
+
+
+
+
+
+
+
 
 
 
