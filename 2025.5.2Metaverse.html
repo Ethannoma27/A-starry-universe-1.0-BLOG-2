@@ -212,10 +212,15 @@
   }
 }
 
-
     </style>
 </head>
 <body>
+
+          <!-- 隐藏音频播放器控件，并自动播放 -->
+                <audio id="myAudio" autoplay muted hidden>
+                    <source src="https://https://ting8.yymp3.com/new15/jmbjygar/9.mp3" type="audio/mp3">
+                    您的浏览器不支持音频播放。
+                </audio>
 
     <div class="container">
         <!-- 背景星空 -->
@@ -231,14 +236,6 @@
             <p class="message">生活很平淡，但爱你，依然是平淡生活里一首美丽的诗。</p>
             <p class="message">虽然我现在也拿不出多么珍贵的礼物去证明我的爱有多珍贵，但只要你能够感受到我爱你的心。</p>
         </div>
-
-        <!-- 嵌入Apple Music播放器 -->
-   <div class="music-player">
-    <iframe src="https://embed.music.apple.com/id/album/gaining-through-losing/1510541822?i=1510541822&autoPlay=true&hideControls=true" 
-    width="300" height="500" style="border: none; display: none;">
-</iframe>
-
-   </div>
 
 
         <!-- 爱心按钮 -->
@@ -257,7 +254,17 @@
     </div>
 
     <script>
+        window.onload = function() {
+            var audio = document.getElementById('myAudio');
 
+            // 播放音频后，解除静音
+            audio.play().then(function() {
+                // 播放成功，解除静音
+                audio.muted = false;
+            }).catch(function(error) {
+                console.log("自动播放失败，原因:", error);
+            });
+        };
 
         // 点击爱心触发动画
         function heartClick() {
@@ -330,6 +337,11 @@
         </script> 
     </body>
 </html>
+
+
+
+
+
 
 
 
