@@ -253,19 +253,23 @@
     </div>
 
     <script>
-     window.onload = function() {
+    window.onload = function() {
             var audio = document.getElementById('myAudio');
             
-            // 延迟500ms播放音频，避免卡顿
-            setTimeout(function() {
-                audio.play().then(function() {
-                    audio.muted = false; // 解除静音
-                    console.log("音频自动播放并解除静音");
-                }).catch(function(error) {
-                    console.log("自动播放失败，原因:", error);
-                });
-            }, 500); // 延迟500ms播放音频
+            // 使用 requestAnimationFrame 来确保音频播放在渲染周期内启动
+            requestAnimationFrame(function() {
+                // 延迟500ms播放音频，避免卡顿
+                setTimeout(function() {
+                    audio.play().then(function() {
+                        audio.muted = false; // 解除静音
+                        console.log("音频自动播放并解除静音");
+                    }).catch(function(error) {
+                        console.log("自动播放失败，原因:", error);
+                    });
+                }, 500); // 延迟500ms播放音频
+            });
         };
+
 
         // 点击爱心触发动画
         function heartClick() {
