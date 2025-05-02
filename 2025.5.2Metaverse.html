@@ -258,17 +258,18 @@
     <script>
 // 获取音频元素
 window.onload = function() {
-        var audio = document.getElementById('myAudio');
+    var audio = document.getElementById('myAudio');
 
-// 延迟播放音频以避免浏览器阻止自动播放
-setTimeout(() => {
-    audio.play().then(function() {
-        // 播放成功，解除静音
-        audio.muted = false;
-    }).catch(function(error) {
-        console.log("自动播放失败，原因:", error);
-    });
-}, 100);          }; // 延迟100ms   
+    // 延迟播放音频，确保浏览器加载并允许播放
+    setTimeout(() => {
+        audio.play().then(function() {
+            // 播放成功，解除静音
+            audio.muted = false;
+        }).catch(function(error) {
+            console.log("自动播放失败，原因:", error);
+        });
+    }, 500); // 延迟500ms，给浏览器更多加载时间
+};
 
         // 点击爱心触发动画
         function heartClick() {
