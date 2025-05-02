@@ -216,13 +216,13 @@
 </head>
 <body>
 
-   <!-- 隐藏音频播放器控件，并自动播放 -->
-<audio id="myAudio" autoplay muted preload="auto" hidden>
-    <!-- 本地音频文件路径 -->
-    <source src="mp3/meteorshower1.mp3" type="audio/mp3">
-    您的浏览器不支持音频播放。
-</audio>
-
+    <audio id="myAudio" autoplay muted preload="auto" hidden>
+        <!-- 提供多个音频格式，确保兼容性 -->
+        <source src="mp3/meteorshower1.mp3" type="audio/mp3">
+        <source src="mp3/meteorshower1.ogg" type="audio/ogg">
+        您的浏览器不支持音频播放。
+    </audio>
+        
 
     <div class="container">
         <!-- 背景星空 -->
@@ -256,7 +256,7 @@
     </div>
 
     <script>
-       window.onload = function() {
+        window.onload = function() {
     var audio = document.getElementById('myAudio');
     
     // 尝试播放音频
