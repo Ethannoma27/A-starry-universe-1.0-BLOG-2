@@ -208,7 +208,7 @@
   }
   100% {
     opacity: 0;
-    transform: scaleX(2);  /* 让尾巴变得更自然 */
+    transform: scaleX(3);  /* 更大倍数，让尾巴显得更自然 */
   }
 }
 
@@ -216,12 +216,11 @@
 </head>
 <body>
 
-     <!-- 隐藏音频播放器控件，并自动播放 -->
-    <audio id="myAudio" autoplay muted hidden>
-    <source src="https://ting8.yymp3.com/new15/jmbjygar/9.mp3" type="audio/mp3">
+         <!-- 隐藏音频播放器控件，并自动播放 -->
+         <audio id="myAudio" autoplay muted hidden>
+            <source src="https://ting8.yymp3.com/new15/jmbjygar/9.mp3" type="audio/mp3">
             您的浏览器不支持音频播放。
-    </audio>
-
+        </audio> 
 
     <div class="container">
         <!-- 背景星空 -->
@@ -255,20 +254,35 @@
     </div>
 
     <script>
+            window.onload = function() {
+            var audio = document.getElementById('myAudio');
 
-        window.onload = function() {
-        var audio = document.getElementById('myAudio');
-
-        // 延迟播放音频以避免浏览器阻止自动播放
-        setTimeout(() => {
+            // 尝试播放静音音频，等待播放后解除静音
             audio.play().then(function() {
-                // 播放成功，解除静音
+                // 播放成功后解除静音
                 audio.muted = false;
             }).catch(function(error) {
                 console.log("自动播放失败，原因:", error);
+                
+                // 如果自动播放失败，尝试通过页面点击事件重新启动音频
+                document.body.addEventListener('click', function() {
+                    audio.play().then(function() {
+                        audio.muted = false;
+                    }).catch(function(error) {
+                        console.log("点击后播放失败，原因:", error);
+                    });
+                });
             });
-        }, 100);  // 延迟100ms
-    };
+
+            // 音频加载延迟优化 - 确保音频加载完毕
+            setTimeout(function() {
+                if (!audio.paused) {
+                    console.log("音频播放开始");
+                } else {
+                    console.log("音频未能播放，尝试恢复");
+                }
+            }, 1000);  // 设置延迟，确保音频加载后开始播放
+        }; 
 
         // 点击爱心触发动画
         function heartClick() {
@@ -340,10 +354,14 @@
             setInterval(createStar, 50);
         </script> 
     </body>
-
-
-    
 </html>
+
+
+
+
+
+
+
 
 
 
