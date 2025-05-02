@@ -217,11 +217,11 @@
 <body>
 
 
-                     <!-- 隐藏音频播放器控件，并自动播放 -->
-                     <audio id="myAudio" autoplay muted hidden>
-                        <source src="https://ting8.yymp3.com/new15/jmbjygar/9.mp3" type="audio/mp3">
-                        您的浏览器不支持音频播放。
-                    </audio>
+  <!-- 隐藏音频播放器控件，并自动播放 -->
+    <audio id="myAudio" autoplay muted hidden>
+    <source src="https://ting8.yymp3.com/new15/jmbjygar/9.mp3" type="audio/mp3">
+      您的浏览器不支持音频播放。
+ </audio>
 
     <div class="container">
         <!-- 背景星空 -->
@@ -255,17 +255,16 @@
     </div>
 
     <script>
-      window.onload = function() {
-            var audio = document.getElementById('myAudio');
+          window.onload = function() {
+        var audio = document.getElementById('myAudio');
 
-            // 播放音频后，解除静音
-            audio.play().then(function() {
-                // 播放成功，解除静音
-                audio.muted = false;
-            }).catch(function(error) {
-                console.log("自动播放失败，原因:", error);
-            });
-        }; 
+        // 自动播放并解除静音
+        audio.play().then(function() {
+            audio.muted = false;  // 播放成功后解除静音
+        }).catch(function(error) {
+            console.log("自动播放失败，原因:", error);
+        });
+    };
 
         // 点击爱心触发动画
         function heartClick() {
