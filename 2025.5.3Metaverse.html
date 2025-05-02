@@ -255,20 +255,21 @@
     </div>
 
     <script>
-            window.onload = function() {
-    var audio = document.getElementById('myAudio');
-    audio.src = 'path/to/your-audio.mp3';  // 设置音频源为MP3
+        window.onload = function() {
+  var audio = document.getElementById('myAudio');
+  audio.src = 'mp3/meteorshower1.mp3';  // 设置音频源为MP3 
 
-    // 直接播放音频
-    audio.play().then(function() {
-      // 播放成功，解除静音
-      audio.muted = false;
-      console.log("音频自动播放并解除静音");
-    }).catch(function(error) {
-      console.log("自动播放失败，原因:", error);
-    });
-  }; 
-        
+  // 尝试播放音频
+  audio.play().then(function() {
+    // 播放成功，解除静音
+    audio.muted = false;
+    console.log("音频自动播放并解除静音");
+  }).catch(function(error) {
+    // 如果自动播放失败
+    console.log("自动播放失败，原因:", error);
+  });
+};
+ 
         // 点击爱心触发动画
         function heartClick() {
             const effect = document.getElementById('loveEffect'); 
