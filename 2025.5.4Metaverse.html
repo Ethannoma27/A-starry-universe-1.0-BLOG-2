@@ -12,7 +12,7 @@
             font-family: 'Arial', sans-serif;
             overflow: hidden;
         }
-
+    
         /* 背景与时光隧道效果 */
         .time-tunnel {
             position: fixed;
@@ -24,12 +24,12 @@
             z-index: -3;
             animation: tunnelAnimation 5s ease-in-out forwards;
         }
-
+    
         @keyframes tunnelAnimation {
             0% { transform: scale(0); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
-
+    
         /* 星空效果 */
         #starField {
             position: absolute;
@@ -41,52 +41,54 @@
             pointer-events: none;
             overflow: hidden;
         }
-
+    
         .star {
             position: absolute;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
             animation: starAnimation 2s linear infinite;
         }
-
+    
         @keyframes starAnimation {
             0%, 100% { opacity: 0.2; }
             50% { opacity: 1; }
         }
-
-        /* 主要内容区域 */
+    
+        /* 主内容区（默认电脑端） */
+        .main-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+    
         .content {
             position: relative;
             z-index: 1;
             color: white;
             text-align: left;
             padding: 40px 20px;
-            margin-top: 0vh;
             font-size: 1.5rem;
             line-height: 2;
             max-width: 800px;
             margin-left: 5vw;
+            transform: translateY(-20%); /* 电脑端整体上移 */
         }
-        /* 电脑端优化 */
-       @media (min-width: 769px) {
-       .content {
-          transform: translateY(-20%);  /* 整体上移20% */
-          }
-        }
+    
         .content h1 {
             font-size: 3rem;
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
             margin-bottom: 40px;
         }
-
+    
         .message {
             font-size: 1.2rem;
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
             margin: 20px 0;
             line-height: 1.8;
         }
-
-        /* 未来窗口 - 强调未来感 */
+    
+        /* 未来窗口 */
         .future-window {
             position: fixed;
             top: 10vh;
@@ -108,25 +110,25 @@
             align-items: center;
             animation: windowPulse 2s infinite;
         }
-
+    
         @keyframes windowPulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-
+    
         .future-window h3 {
             font-size: 1.5rem;
             text-shadow: 0 0 10px rgba(0, 255, 153, 0.8);
             margin-bottom: 10px;
         }
-
+    
         .future-window p {
             font-size: 1.1rem;
             text-shadow: 0 0 8px rgba(0, 255, 153, 0.6);
             margin-top: 10px;
         }
-
+    
         /* 底部留言 */
         .footer {
             position: absolute;
@@ -138,7 +140,8 @@
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
             z-index: 1;
         }
-
+    
+        /* 钢琴动图 */
         .piano-image {
             position: absolute;
             top: 60%;
@@ -148,58 +151,45 @@
             height: auto;
             z-index: 1;
         }
-
- /* 移动端优化 */
-@media (max-width: 768px) {
-    /* 整体主区块 */
-    .main-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 50px;
-        transform: translateY(-10%); /* 上移10% */
-    }
-
-    /* 内容区域 */
-    .content {
-        padding: 15px;
-        font-size: 1rem;
-        margin-left: 0;
-        margin-top: 0;
-    }
-
-    .content h1 {
-        font-size: 2rem;
-    }
-
-    /* “我想未来我们”和后面的所有 .message 元素整体下移 20% */
-    .future-window,
-    .message {
-        transform: translateY(20%); /* 下移 20% */
-    }
-
-    /* 未来窗口 */
-    .future-window {
-        width: 180px;
-        height: 100px;
-        font-size: 1.2rem;
-        margin-top: 20%;
-    }
-
-    /* 钢琴图像 */
-    .piano-image {
-        width: 90%;
-        max-width: 200px;
-        opacity: 0.6;
-    }
-
-    /* 隐藏底部留言 */
-    .footer {
-        display: none;
-    }
-}
-
-</style> 
+    
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+            .content {
+                padding: 15px;
+                font-size: 1rem;
+                margin-left: 0;
+                transform: none; /* 移除上移 */
+            }
+    
+            .content h1 {
+                font-size: 2rem;
+            }
+    
+            .message {
+                font-size: 1rem;
+                transform: translateY(20%); /* 文字下移 */
+            }
+    
+            .future-window {
+                width: 180px;
+                height: 100px;
+                font-size: 1.2rem;
+                margin-top: 20%;
+                transform: translateY(20%);
+            }
+    
+            .piano-image {
+                width: 90%;
+                max-width: 200px;
+                opacity: 0.6;
+            }
+    
+            .footer {
+                display: none;
+            }
+        }
+    </style>
+    
 </head>
 <body>
 
@@ -322,8 +312,8 @@
 
     </script>
 </body>
-</html>
 
+</html>
 
 
 
