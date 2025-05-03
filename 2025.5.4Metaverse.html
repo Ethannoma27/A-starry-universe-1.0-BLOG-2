@@ -154,7 +154,11 @@
          
          transform: translateY(-10%);  
     }
-
+         @media (max-width: 768px) {
+    .message {
+        transform: translateY(15%);  /* 仅在手机端下移所有的 .message 元素 15% */
+    }
+}
             .content {
                 padding: 15px;
                 font-size: 1rem;
