@@ -168,70 +168,61 @@
 }
 
 
-     /* 移动端优化 */
-
-     @media (max-width: 600px) {
-            .piano-image {
-                width: 90%;         /* 在小屏设备上，将钢琴动图宽度设置为屏幕的90% */
-                opacity: 0.7;       /* 减少透明度 */
-            }
-            .text-container {
-                font-size: 1.4rem;  /* 调整文字在小屏设备上的大小 */
-            }
-        }
-     @media (max-width: 600px) {
-            .content {
-                padding: 15px;
-                font-size: 1rem;
-                margin-left: 0;
-            }
-
-            .content h1 {
-                font-size: 2rem;
-            }
-
-            .message {
-                font-size: 1rem;
-            }
-
-            .future-window {
-                width: 180px;
-                height: 120px;
-                font-size: 1.2rem;
-            }
-
-            .footer {
-                font-size: 0.8rem;
-            }
-
-            .piano-image {
-                width: 200px;
-            }
-        } 
-        @media (max-width: 600px) {
+    /* 移动端优化 */
+@media (max-width: 600px) {
+    /* 主体整体上移 30% */
     .main-section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 100px; /* 预留顶部空间，可微调 */
+        padding-top: 50px;
+        transform: translateY(-30%);
     }
 
+    /* 标题内容缩小 */
+    .content {
+        padding: 15px;
+        font-size: 1rem;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .content.title-only {
+        margin-bottom: 10px;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    .message {
+        font-size: 1rem;
+    }
+
+    /* 遇见未来我们框 - 下移 15% 并重新定位 */
     .future-window {
         position: relative;
         top: auto;
         right: auto;
+        width: 180px;
+        height: 120px;
+        font-size: 1.2rem;
+        margin-top: 15%;
         margin-bottom: 20px;
     }
 
-    .content {
-        margin-top: 0;
+    /* 钢琴图片缩放 */
+    .piano-image {
+        width: 90%;
+        max-width: 200px;
+        opacity: 0.7;
     }
-}
-   @media (max-width: 600px) {
-    .main-section {
-        transform: translateY(-30%);
+
+    /* 英文 footer 隐藏 */
+    .footer {
+        display: none;
     }
-    
+
 }
 
     </style>
@@ -368,4 +359,3 @@
 
 
 
- 
