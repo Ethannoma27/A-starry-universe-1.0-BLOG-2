@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>倾听爱你的声音</title>
+    <title>爱你的声音</title>
     <style>
         body, html {
             margin: 0;
@@ -215,28 +215,18 @@
         
     </div>
     <script>
-  window.onload = function() {
+         window.onload = function() {
     var audio = document.getElementById('myAudio');
-
-    // 尝试播放音频并解除静音
-    audio.muted = true; // 设置初始为静音
+    
+    // 尝试播放音频
     audio.play().then(function() {
-        // 播放成功后解除静音
+        // 播放成功，解除静音
         audio.muted = false;
+        console.log("音频自动播放并解除静音");
     }).catch(function(error) {
         console.log("自动播放失败，原因:", error);
-        // 如果自动播放失败，尝试通过页面点击事件重新启动音频
-        document.body.addEventListener('click', function() {
-            audio.play().then(function() {
-                audio.muted = false;
-            }).catch(function(error) {
-                console.log("点击后播放失败，原因:", error);
-            });
-        });
     });
 };
-
-
 
      // 创建流星的函数
      function createMeteor() {
