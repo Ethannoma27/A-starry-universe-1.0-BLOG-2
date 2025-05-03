@@ -215,35 +215,25 @@
         
     </div>
     <script>
-        window.onload = function() {
-        var audio = document.getElementById('myAudio');
+             window.onload = function() {
+            var audio = document.getElementById('myAudio');
 
-        // 尝试播放静音音频，等待播放后解除静音
-        audio.play().then(function() {
-            // 播放成功后解除静音
-            audio.muted = false;
-        }).catch(function(error) {
-            console.log("自动播放失败，原因:", error);
-            
-            // 如果自动播放失败，尝试通过页面点击事件重新启动音频
-            document.body.addEventListener('click', function() {
-                audio.play().then(function() {
-                    audio.muted = false;
-                }).catch(function(error) {
-                    console.log("点击后播放失败，原因:", error);
+            // 先播放静音音频，等待播放后再解除静音
+            audio.play().then(function() {
+                // 播放成功后解除静音
+                audio.muted = false;
+            }).catch(function(error) {
+                console.log("自动播放失败，原因:", error);
+                // 如果自动播放失败，尝试通过页面事件重新启动音频
+                document.body.addEventListener('click', function() {
+                    audio.play().then(function() {
+                        audio.muted = false;
+                    }).catch(function(error) {
+                        console.log("点击后播放失败，原因:", error);
+                    });
                 });
             });
-        });
-
-        // 音频加载延迟优化 - 确保音频加载完毕
-        setTimeout(function() {
-            if (!audio.paused) {
-                console.log("音频播放开始");
-            } else {
-                console.log("音频未能播放，尝试恢复");
-            }
-        }, 1000);  // 设置延迟，确保音频加载后开始播放
-    }; 
+        };
 
 
 
@@ -307,3 +297,9 @@
     </script> 
 </body>
 </html>
+
+
+
+
+
+
