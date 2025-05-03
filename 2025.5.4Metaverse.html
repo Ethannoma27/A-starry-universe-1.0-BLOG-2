@@ -144,54 +144,57 @@
             z-index: 1;
         }
 
-        /* 移动端优化 */
-        @media (max-width: 600px) {
-       .main-section {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         padding-top: 50px;
-         
-         transform: translateY(-10%);  
+ /* 移动端优化 */
+@media (max-width: 768px) {
+    /* 整体主区块 */
+    .main-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        transform: translateY(-10%); /* 上移10% */
     }
-         @media (max-width: 768px) {
+
+    /* 内容区域 */
+    .content {
+        padding: 15px;
+        font-size: 1rem;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    /* “我想未来我们”和后面的所有 .message 元素整体下移 20% */
+    .future-window,
     .message {
-        transform: translateY(20%);  /* 仅在手机端下移所有的 .message 元素 20% */
+        transform: translateY(20%); /* 下移 20% */
+    }
+
+    /* 未来窗口 */
+    .future-window {
+        width: 180px;
+        height: 100px;
+        font-size: 1.2rem;
+        margin-top: 20%;
+    }
+
+    /* 钢琴图像 */
+    .piano-image {
+        width: 90%;
+        max-width: 200px;
+        opacity: 0.6;
+    }
+
+    /* 隐藏底部留言 */
+    .footer {
+        display: none;
     }
 }
-            .content {
-                padding: 15px;
-                font-size: 1rem;
-                margin-left: 0;
-                margin-top: 0;
-            }
 
-            .content h1 {
-                font-size: 2rem;
-            }
-
-            .message {
-                font-size: 1rem;
-            }
-
-            .future-window {
-                width: 180px;
-                height: 100px;
-                font-size: 1.2rem;
-                margin-top: 20%;
-            }
-
-            .piano-image {
-                width: 90%;
-                max-width: 200px;
-                opacity: 0.6;
-            }
-
-            .footer {
-                display: none;
-            }
-        }
-    </style>
+</style> 
 </head>
 <body>
 
@@ -315,5 +318,8 @@
     </script>
 </body>
 </html>
+
+
+
 
 
