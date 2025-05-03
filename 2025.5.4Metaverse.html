@@ -208,6 +208,25 @@
                 width: 200px;
             }
         } 
+        @media (max-width: 600px) {
+    .main-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px; /* 预留顶部空间，可微调 */
+    }
+
+    .future-window {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        margin-top: 0;
+    }
+}
 
     </style>
 </head>
@@ -230,6 +249,15 @@
         <div class="star" style="top: 60%; left: 80%; width: 3px; height: 3px;"></div>
     </div>
 
+ <!-- 主体区块（桌面端不受影响，移动端自动调整布局） -->
+<div class="main-section">
+    
+    <!-- 未来窗口 - 强调未来的愿景 -->
+    <div class="future-window">
+        <h3>遇见未来的我们</h3>
+        <p>一起看尽世间风景，经历更多的幸福与憧憬。</p>
+    </div>
+
     <!-- 主要内容 -->
     <div class="content">
         <h1>夜的钢琴曲</h1>
@@ -240,13 +268,8 @@
         <p class="message">去创造更多的美好，因为我们都很想念25岁的青春</p>
         <p class="message">不仅是因为年轻、激情和浪漫，还有那份爱的自由、轻松和快乐</p>
     </div>
+</div>
 
-    <!-- 未来窗口 - 强调未来的愿景 -->
-    <div class="future-window">
-
-        <h3>遇见未来的我们</h3>
-        <p>一起看尽世间风景，经历更多的幸福与憧憬。</p>
-    </div>
 
     <!-- 插入钢琴动图 -->
     <img src="images/piano.gif" alt="钢琴弹奏" class="piano-image">
