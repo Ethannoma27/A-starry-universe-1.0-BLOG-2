@@ -151,47 +151,47 @@
             height: auto;
             z-index: 1;
         }
-    
-        /* 移动端优化 */
-        @media (max-width: 768px) {
-            .content {
-                padding: 15px;
-                font-size: 1rem;
-                margin-left: 0;
-                transform: none; /* 移除上移 */
-            }
-            .content.title-only {
-
-           transform: translateY(-100px);
+   /* 移动端优化 */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+        font-size: 1rem;
+        margin-left: 0;
+        transform: none; /* 移除上移 */
     }
-    
-            .content h1 {
-                font-size: 2rem;
-            }
-    
-            .message {
-                font-size: 1rem;
-                transform: translateY(20%); /* 文字下移 */
-            }
-    
-            .future-window {
-                width: 180px;
-                height: 100px;
-                font-size: 1.2rem;
-                margin-top: 20%;
-                transform: translateY(20% - 100px);
-            }
-    
-            .piano-image {
-                width: 90%;
-                max-width: 200px;
-                opacity: 0.6;
-            }
-    
-            .footer {
-                display: none;
-            }
-        }
+
+    .content.title-only {
+        transform: translateY(-100px);  /* 上移 100px */
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    .message {
+        font-size: 1rem;
+        transform: translateY(20%); /* 文字下移 */
+    }
+
+    .future-window {
+        width: 180px;
+        height: 100px;
+        font-size: 1.2rem;
+        margin-top: 20%;
+        transform: translateY(-100px);  /* 上移 100px */
+    }
+
+    .piano-image {
+        width: 90%;
+        max-width: 200px;
+        opacity: 0.6;
+    }
+
+    .footer {
+        display: none;
+    }
+}
+
     </style>
     
 </head>
@@ -318,6 +318,7 @@
 </body>
 
 </html>
+
 
 
 
