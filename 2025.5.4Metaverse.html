@@ -165,7 +165,30 @@
       height: auto;
       z-index: 1;
 }
+      /* 手机端样式 */
+      @media (max-width: 768px) {
+            /* 钢琴图片调整透明度并确保位置 */
+            .piano-image {
+                opacity: 0.4;  /* 在手机端增加透明度 */
+                top: 70%;  /* 将钢琴图像稍微向下移动 */
+                left: 50%;
+                transform: translate(-50%, -50%);  /* 保持居中 */
+                width: 80%;  /* 在手机上适应屏幕宽度 */
+            }
+             /* 文字内容调整 */
+             .content {
+                padding: 20px;
+                font-size: 1.2rem;  /* 调整字体大小适配手机屏幕 */
+            }
 
+            .content h1 {
+                font-size: 2rem;  /* 减小标题大小 */
+            }
+
+            .footer {
+                font-size: 0.9rem;  /* 减小底部文字大小 */
+            }
+        } 
 
     </style>
 </head>
