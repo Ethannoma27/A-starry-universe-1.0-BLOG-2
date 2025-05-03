@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>爱你的声音</title>
     <style>
+        /* 合并 body 和 html 的设置 */
         body, html {
             margin: 0;
             padding: 0;
@@ -12,7 +13,7 @@
             font-family: 'Arial', sans-serif;
             overflow: hidden;
         }
-    
+
         /* 背景与时光隧道效果 */
         .time-tunnel {
             position: fixed;
@@ -24,12 +25,12 @@
             z-index: -3;
             animation: tunnelAnimation 5s ease-in-out forwards;
         }
-    
+
         @keyframes tunnelAnimation {
             0% { transform: scale(0); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
-    
+
         /* 星空效果 */
         #starField {
             position: absolute;
@@ -41,19 +42,19 @@
             pointer-events: none;
             overflow: hidden;
         }
-    
+
         .star {
             position: absolute;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
             animation: starAnimation 2s linear infinite;
         }
-    
+
         @keyframes starAnimation {
             0%, 100% { opacity: 0.2; }
             50% { opacity: 1; }
         }
-    
+
         /* 主内容区（默认电脑端） */
         .main-section {
             display: flex;
@@ -61,7 +62,7 @@
             align-items: center;
             padding-top: 50px;
         }
-    
+
         .content {
             position: relative;
             z-index: 1;
@@ -72,22 +73,22 @@
             line-height: 2;
             max-width: 800px;
             margin-left: 5vw;
-            transform: translateY(-20%); /* 电脑端整体上移 */
+            transform: translateY(-20%);
         }
-    
+
         .content h1 {
             font-size: 3rem;
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
             margin-bottom: 40px;
         }
-    
+
         .message {
             font-size: 1.2rem;
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
             margin: 20px 0;
             line-height: 1.8;
         }
-    
+
         /* 未来窗口 */
         .future-window {
             position: fixed;
@@ -110,25 +111,25 @@
             align-items: center;
             animation: windowPulse 2s infinite;
         }
-    
+
         @keyframes windowPulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-    
+
         .future-window h3 {
             font-size: 1.5rem;
             text-shadow: 0 0 10px rgba(0, 255, 153, 0.8);
             margin-bottom: 10px;
         }
-    
+
         .future-window p {
             font-size: 1.1rem;
             text-shadow: 0 0 8px rgba(0, 255, 153, 0.6);
             margin-top: 10px;
         }
-    
+
         /* 底部留言 */
         .footer {
             position: absolute;
@@ -140,7 +141,7 @@
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
             z-index: 1;
         }
-    
+
         /* 钢琴动图 */
         .piano-image {
             position: absolute;
@@ -151,8 +152,8 @@
             height: auto;
             z-index: 1;
         }
-           
-         /* 移动端优化 */
+
+     /* 移动端优化 */
 @media (max-width: 768px) {
     .content {
         padding: 15px;
@@ -160,7 +161,6 @@
         margin-left: 0;
         transform: translateY(-50px); /* 移除上移 */
     }
-
 
     .content h1 {
         font-size: 2rem;
@@ -175,8 +175,9 @@
         width: 180px;
         height: 100px;
         font-size: 1.2rem;
-        margin-top: 20%;
-        transform: translateY(-150px);  /* 上移 150px */
+        /* 使用 transform 来精确控制位置，移除 margin-top */
+        transform: translateY(-40vh); /* 使用视口高度百分比来定位 */
+        /* 进一步控制如果有必要 */
     }
 
     .piano-image {
@@ -188,11 +189,15 @@
     .footer {
         display: none;
     }
-
 }
 
-
     </style>
+</head>
+<body>
+    <!-- Your HTML content goes here -->
+</body>
+</html>
+
     
 </head>
 <body>
@@ -318,8 +323,6 @@
 </body>
 
 </html>
-
-
 
 
 
