@@ -95,26 +95,26 @@
         }
 
        /* 未来窗口 - 强调未来感，横着显示，2排布局 */
-.future-window {
-    position: fixed;
-    top: 10vh;
-    right: 10vw;
-    width: 200px; /* 增加宽度，适应2排内容 */
-    height: 150px; /* 可以根据内容的高度调整 */
-    background: rgba(0, 0, 0, 0.4);
-    border: 3px solid #00ff99;
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    font-size: 1.4rem;
-    color: #fff;
-    box-shadow: 0 0 20px rgba(0, 255, 153, 0.8);
-    z-index: 2;
-    display: flex;
-    flex-direction: column; /* 使用列布局，确保内容在上下排列 */
-    justify-content: center;
-    align-items: center;
-    animation: windowPulse 2s infinite;
+       .future-window {
+       position: fixed;
+       top: 10vh;
+       right: 10vw;
+       width: 200px; /* 增加宽度，适应2排内容 */
+       height: 150px; /* 可以根据内容的高度调整 */
+       background: rgba(0, 0, 0, 0.4);
+       border: 3px solid #00ff99;
+       border-radius: 20px;
+       padding: 20px;
+       text-align: center;
+       font-size: 1.4rem;
+       color: #fff;
+       box-shadow: 0 0 20px rgba(0, 255, 153, 0.8);
+       z-index: 2;
+       display: flex;
+       flex-direction: column; /* 使用列布局，确保内容在上下排列 */
+       justify-content: center;
+       align-items: center;
+       animation: windowPulse 2s infinite;
 }
 
 /* 未来窗口的动态呼吸效果 */
@@ -167,8 +167,7 @@
       z-index: 1;
 }
 
-
-    /* 移动端优化 */
+/* 移动端优化 */
 @media (max-width: 600px) {
     /* 主体整体上移 30% */
     .main-section {
@@ -179,16 +178,12 @@
         transform: translateY(-30%);
     }
 
-    /* 标题内容缩小 */
+    /* 内容缩小调整 */
     .content {
         padding: 15px;
         font-size: 1rem;
         margin-left: 0;
         margin-top: 0;
-    }
-
-    .content.title-only {
-        margin-bottom: 10px;
     }
 
     .content h1 {
@@ -199,34 +194,29 @@
         font-size: 1rem;
     }
 
-    /* 遇见未来我们框 - 垂直缩小 10% 并下移 10% */
+    /* 遇见未来我们框 - 缩小 10% 并下移 20% */
     .future-window {
         position: relative;
-        top: auto;
-        right: auto;
         width: 180px;
         height: 100px; /* 缩小 10% */
         font-size: 1.2rem;
-        margin-top: 20%; /* 下移 10% */
+        margin-top: 20%; /* 下移 20% */
         margin-bottom: 10px;
     }
 
-
-    /* 钢琴图片缩放 */
+    /* 钢琴图片调整 */
     .piano-image {
         width: 90%;
         max-width: 200px;
         opacity: 0.6;
     }
 
-    /* 英文 footer 隐藏 */
+    /* 隐藏 footer 中英文 */
     .footer {
         display: none;
     }
-
 }
-
-    </style>
+</style>
 </head>
 <body>
 
