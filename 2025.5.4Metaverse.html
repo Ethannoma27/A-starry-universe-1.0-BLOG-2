@@ -295,6 +295,21 @@
         }
 
         setInterval(createStar, 50);
+
+        function adjustHeight() {
+        var viewportHeight = window.innerHeight;  // 获取当前浏览器窗口的可视区域高度
+       document.documentElement.style.setProperty('--vh', `${viewportHeight}px`);  // 设置一个 CSS 变量 '--vh' 为当前窗口的高度
+          }
+
+        // 检测是否为手机端设备
+      if (window.matchMedia("(max-width: 768px)").matches) {
+       // 只有当屏幕宽度小于或等于 768px 时才会执行调整
+      window.addEventListener('resize', adjustHeight);
+      adjustHeight();  // 初始化时调用一次
+   }
+
     </script>
 </body>
 </html>
+
+
