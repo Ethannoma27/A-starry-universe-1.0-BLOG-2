@@ -166,7 +166,19 @@
       height: auto;
       z-index: 1;
 }
+
+
      /* 移动端优化 */
+
+     @media (max-width: 600px) {
+            .piano-image {
+                width: 90%;         /* 在小屏设备上，将钢琴动图宽度设置为屏幕的90% */
+                opacity: 0.7;       /* 减少透明度 */
+            }
+            .text-container {
+                font-size: 1.4rem;  /* 调整文字在小屏设备上的大小 */
+            }
+        }
      @media (max-width: 600px) {
             .content {
                 padding: 15px;
