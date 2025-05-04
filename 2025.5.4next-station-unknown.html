@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱的自然与不刻意</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* 更现代和轻盈的字体 */
+            background: linear-gradient(to bottom right, #f9f0f6, #e4d6f0); /* 更加温柔的淡粉色到浅紫色渐变 */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4.5rem;
+    color: white;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 30px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 3s ease-in-out;
+    z-index: 1;
+    position: relative; /* 使用相对定位 */
+    top: -100px; /* 向上移动 100px */
+}
+
+
+        h2 {
+            font-family: 'Playfair Display', serif; /* 优雅的衬线字体 */
+            font-size: 2.2rem;
+            color: #fff; /* 使用白色文字 */
+            margin-top: 20px;
+            letter-spacing: 0.5px;
+            font-weight: 400;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* 更加强烈的阴影 */
+            padding: 8px 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* 半透明黑色背景 */
+            border-radius: 10px; /* 圆角效果 */
+            animation: fadeIn 3s ease-in-out 1s;
+            z-index: 1; /* 确保文字位于图片上方 */
+        }
+
+
+        .content {
+    position: relative;
+    top: 100px; /* 下移 100px */
+    color: #8e8cd5; /* 稍微加深的淡紫色，使文字更清晰 */
+    font-size: 1.6rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-style: normal;
+    opacity: 0;
+    animation: fadeInContent 3s ease-in-out 2s forwards;
+    z-index: 1;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* 增加轻微阴影，提升对比度 */
+} 
+
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            color: #f6b0b0; /* 浅粉色，温暖而轻盈 */
+            font-size: 0.95rem;
+            font-style: italic;
+            z-index: 1; /* 确保文字在图片上方 */
+        }
+
+        .background-image {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       width: 60%;
+       height: 50%;
+       opacity: 0.6;
+       object-fit: cover;
+       z-index: -1;
+       border-radius: 20px; /* 添加圆角效果 */
+}
+
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInContent {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+          /* 使 YouTube iframe 不可见 */
+          iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            opacity: 0; /* 设置透明度为0，隐藏 iframe */
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+          <!-- 替换为 YouTube 嵌入的视频 -->
+          <iframe width="560" height="315" 
+          src="https://www.youtube.com/embed/OzBqyJPzu9c?autoplay=1&start=0&controls=0&modestbranding=1&rel=0" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+  </iframe>
+  
+
+    <img src="images/background6.jpg" alt="地铁图" class="background-image"> <!-- 背景图片 -->
+    <h1>下一站 未知</h1> <!-- 使用半透明背景的文字 -->
+    <h2>跟随心的节奏</h2> <!-- 使用半透明背景的文字 -->
+    <div class="content">
+        <p>爱，无需强求。它如水般流淌，轻轻到来，温柔绽放。我们不知道下一站是哪里，但依然满怀期待。</p>
+    </div>
+
+  
+    <script>
+        window.onload = function() {
+            var audio = document.getElementById('myAudio');
+            // 确保音频在页面加载时静音并自动播放
+            audio.play().then(function() {
+                console.log("音频自动播放");
+                // 可以在此取消静音，也可以保留静音以符合浏览器限制
+                audio.muted = false; // 解除静音
+            }).catch(function(error) {
+                console.log("自动播放失败，原因:", error);
+            });
+        };
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
