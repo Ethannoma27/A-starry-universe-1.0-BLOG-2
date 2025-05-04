@@ -136,17 +136,17 @@
         }
 
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
-          <!-- 替换为 YouTube 嵌入的视频 -->
-          <iframe width="560" height="315" 
-          src="https://www.youtube.com/embed/OzBqyJPzu9c?autoplay=1&start=0&controls=0&modestbranding=1&rel=0" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-  </iframe>
-  
+    <!-- YouTube 嵌入的视频（透明 iframe） -->
+    <div id="video-container" style="display: none;">
+        <div id="player"></div> <!-- 用于加载 YouTube iframe -->
+    </div>
+
+    <div id="fallback-content">
+        <p>视频加载失败，稍后重试</p>
+    </div> 
 
     <img src="images/background6.jpg" alt="地铁图" class="background-image"> <!-- 背景图片 -->
     <h1>下一站 未知</h1> <!-- 使用半透明背景的文字 -->
@@ -154,24 +154,70 @@
     <div class="content">
         <p>爱，无需强求。它如水般流淌，轻轻到来，温柔绽放。我们不知道下一站是哪里，但依然满怀期待。</p>
     </div>
+    
+     <!-- YouTube API -->
+     <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  
-    <script>
-        window.onload = function() {
-            var audio = document.getElementById('myAudio');
-            // 确保音频在页面加载时静音并自动播放
-            audio.play().then(function() {
-                console.log("音频自动播放");
-                // 可以在此取消静音，也可以保留静音以符合浏览器限制
-                audio.muted = false; // 解除静音
-            }).catch(function(error) {
-                console.log("自动播放失败，原因:", error);
+        var player;
+        var videoLoaded = false;
+
+        function onYouTubeIframeAPIReady() {
+            console.log('YouTube API loaded');
+            player = new YT.Player('player', {
+                height: '360',
+                width: '640',
+                videoId: 'OzBqyJPzu9c',  // YouTube 视频 ID
+                playerVars: {
+                    autoplay: 1,      // 自动播放
+                    controls: 0,      // 不显示控制条
+                    mute: 1,          // 默认静音
+                    showinfo: 0,      // 不显示视频信息
+                    rel: 0            // 不显示相关视频
+                },
+                events: {
+                    'onError': onVideoError,
+                    'onReady': onVideoReady
+                }
             });
-        };
+        }
+
+        function onVideoReady(event) {
+            console.log('视频已准备好');
+            document.getElementById('fallback-content').style.display = 'none';
+            document.getElementById('video-container').style.display = 'block';
+        }
+
+        function onVideoError(event) {
+            console.log('视频加载失败，显示占位图片和播放按钮');
+            document.getElementById('fallback-content').style.display = 'block';
+            document.getElementById('video-container').style.display = 'none';
+        }
+
+        function loadVideo() {
+            if (!videoLoaded) {
+                player.loadVideoById('OzBqyJPzu9c');  // 使用 YouTube 视频 ID
+                videoLoaded = true;
+                document.getElementById('fallback-content').style.display = 'none';
+                document.getElementById('video-container').style.display = 'block';
+            }
+        }
+
+        // 解除静音按钮
+        document.getElementById('unmuteButton').addEventListener('click', function() {
+            if (player) {
+                player.unMute();
+                this.style.display = 'none';
+                document.getElementById('mute-warning').style.display = 'none';  // 隐藏提示
+            }
+        });
     </script>
 </body>
-
 </html>
+
 
 
 
