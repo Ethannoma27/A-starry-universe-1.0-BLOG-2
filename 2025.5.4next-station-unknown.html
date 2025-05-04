@@ -33,22 +33,21 @@
         }
 
         h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            color: white;
-            margin: 0;
-            text-transform: uppercase;
-            font-weight: bold;
-            padding: 10px 30px;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 1.8s ease-in-out;
-            z-index: 1;
-            position: relative;
-            top: -75px;
-        }
-
+      font-family: 'Dancing Script', cursive;
+      font-size: 4.5rem;
+      color: white;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: bold;
+      padding: 10px 30px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1.8s ease-in-out;
+      z-index: 1;
+      position: relative;
+      top: -90px; 
+}
         h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
@@ -281,45 +280,51 @@
             animation-delay: 4.5s;
         }
 
-        /* 适应不同屏幕尺寸 */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.8rem;
-                padding: 8px 20px;
-                top: -150px;
-            }
 
-            h2 {
-                font-size: 1.4rem;
-                padding: 6px 16px;
-                margin-top: 10px;
-            }
+/* 适应不同屏幕尺寸 */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.8rem;
+        padding: 8px 20px;
+        position: absolute; /* 设置为绝对定位 */
+        top: 10%; /* 调整为适当的顶部偏移 */
+        left: 50%; /* 居中 */
+        transform: translateX(-50%); /* 使元素居中 */
+        margin-top: 0; /* 确保没有额外的 margin-top */
+    }
 
-            .content {
-                font-size: 1.1rem;
-                line-height: 1.5;
-                top: 60px;
-                padding: 0 15px;
-            }
+    h2 {
+        font-size: 1.4rem;
+        padding: 6px 16px;
+        margin-top: 10px;
+    }
 
-            .background-image {
-                width: 90%;
-                height: auto;
-                border-radius: 15px;
-                top: calc(50% - 50px);
-            }
+    .content {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        top: 60px;
+        padding: 0 15px;
+    }
 
-            footer {
-                font-size: 0.85rem;
-                bottom: 10px;
-                padding: 0 10px;
-                text-align: center;
-            }
+    .background-image {
+        width: 90%;
+        height: auto;
+        border-radius: 15px;
+        top: calc(50% - 50px);
+    }
 
-            body {
-                padding: 10px;
-            }
-        }
+    footer {
+        font-size: 0.85rem;
+        bottom: 10px;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    body {
+        padding: 10px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -342,8 +347,7 @@
             <span class="wave">d</span><span class="wave">o</span><span class="wave">i</span><span class="wave">n</span><span class="wave">g</span>
             <span class="wave">?</span>
             <span class="wave">&nbsp;</span>
-            
-            <!-- 后面的逐字跳动文本 -->
+
             <span class="wave">W</span><span class="wave">h</span><span class="wave">a</span><span class="wave">t</span>
             <span class="wave">&nbsp;</span>
             <span class="wave">a</span><span class="wave">r</span><span class="wave">e</span>
@@ -363,34 +367,33 @@
     </audio>
 
     <script>
-        window.onload = function () {
-            const audio = document.getElementById("myAudio");
+ window.onload = function () {
+    const audio = document.getElementById("myAudio");
 
-            // 检查音频是否加载完毕
-            audio.addEventListener("canplaythrough", function () {
-                if (!audio.hasPlayed) {
-                    audio.hasPlayed = true;
-                    audio.play()
-                        .then(() => {
-                            audio.muted = false;
-                            console.log("✅ 音频自动播放成功并解除静音");
-                        })
-                        .catch((err) => {
-                            console.warn("❌ 自动播放失败：", err);
-                        });
+    // 检查音频是否加载完毕
+    audio.addEventListener("canplaythrough", function () {
+        if (!audio.hasPlayed) {
+            audio.hasPlayed = true;
+            audio.play()
+                .then(() => {
+                    audio.muted = false; // 自动解除静音
+                    console.log("✅ 音频自动播放成功并解除静音");
+                })
+                .catch((err) => {
+                    console.warn("❌ 自动播放失败：", err);
+                });
 
-                    // 延迟 10 秒后开始显示打字效果
-                    setTimeout(function() {
-                        // 确保文字的逐字效果能够正确显示
-                        document.getElementById("typing-text").style.opacity = 1;
-                        const textElement = document.getElementById("typing-text");
-                        textElement.style.animation = 'fadeInContent 2s ease-in-out forwards';
-                    }, 10000);  // 10秒后触发
-                }
-            });
-        };
-    </script>
-
+            // 延迟 10 秒后开始显示打字效果
+            setTimeout(function() {
+                // 确保文字的逐字效果能够正确显示
+                document.getElementById("typing-text").style.opacity = 1;
+                const textElement = document.getElementById("typing-text");
+                textElement.style.animation = 'fadeInContent 2s ease-in-out forwards';
+            }, 10000);  // 10秒后触发
+        }
+    });
+};
+</script>
 </body>
 
-</html>
+</html> 
