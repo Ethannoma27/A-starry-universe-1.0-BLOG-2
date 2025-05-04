@@ -6,8 +6,8 @@
     <title>爱的自然与不刻意</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif; /* 更现代和轻盈的字体 */
-            background: linear-gradient(to bottom right, #f9f0f6, #e4d6f0); /* 更加温柔的淡粉色到浅紫色渐变 */
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #f9f0f6, #e4d6f0);
             margin: 0;
             padding: 0;
             height: 100vh;
@@ -21,89 +21,84 @@
         }
 
         h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 4.5rem;
-    color: white;
-    margin: 0;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 10px 30px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 3s ease-in-out;
-    z-index: 1;
-    position: relative; /* 使用相对定位 */
-    top: -100px; /* 向上移动 100px */
-}
-
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: white;
+            margin: 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 10px 30px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 3s ease-in-out;
+            z-index: 1;
+            position: relative;
+            top: -100px;
+        }
 
         h2 {
-            font-family: 'Playfair Display', serif; /* 优雅的衬线字体 */
+            font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
-            color: #fff; /* 使用白色文字 */
+            color: #fff;
             margin-top: 20px;
             letter-spacing: 0.5px;
             font-weight: 400;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* 更加强烈的阴影 */
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
             padding: 8px 20px;
-            background-color: rgba(0, 0, 0, 0.6); /* 半透明黑色背景 */
-            border-radius: 10px; /* 圆角效果 */
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
             animation: fadeIn 3s ease-in-out 1s;
-            z-index: 1; /* 确保文字位于图片上方 */
+            z-index: 1;
         }
 
-
         .content {
-    position: relative;
-    top: 100px; /* 下移 100px */
-    color: #8e8cd5; /* 稍微加深的淡紫色，使文字更清晰 */
-    font-size: 1.6rem;
-    line-height: 1.8;
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-    font-family: 'Pacifico', cursive;
-    font-style: normal;
-    opacity: 0;
-    animation: fadeInContent 3s ease-in-out 2s forwards;
-    z-index: 1;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* 增加轻微阴影，提升对比度 */
-} 
-
-
-@keyframes fadeInContent {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
+            position: relative;
+            top: 100px;
+            color: #8e8cd5;
+            font-size: 1.6rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            opacity: 0;
+            animation: fadeInContent 3s ease-in-out 2s forwards;
+            z-index: 1;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
 
         footer {
             position: absolute;
             bottom: 20px;
-            color: #f6b0b0; /* 浅粉色，温暖而轻盈 */
+            color: #f6b0b0;
             font-size: 0.95rem;
             font-style: italic;
-            z-index: 1; /* 确保文字在图片上方 */
+            z-index: 1;
         }
 
         .background-image {
-       position: absolute;
-       top: 50%;
-       left: 50%;
-       transform: translate(-50%, -50%);
-       width: 60%;
-       height: 50%;
-       opacity: 0.6;
-       object-fit: cover;
-       z-index: -1;
-       border-radius: 20px; /* 添加圆角效果 */
-}
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 50%;
+            opacity: 0.6;
+            object-fit: cover;
+            z-index: -1;
+            border-radius: 20px;
+        }
 
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            opacity: 1; /* 设置为 1，确保 iframe 可见 */
+        }
 
         @keyframes fadeIn {
             from {
@@ -124,39 +119,27 @@
                 opacity: 1;
             }
         }
-          /* 使 YouTube iframe 不可见 */
-          iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            opacity: 0; /* 设置透明度为0，隐藏 iframe */
-        }
-
     </style>
+</head>
+<body>
 
-<img src="images/background6.jpg" alt="地铁图" class="background-image"> <!-- 背景图片 -->
-<h1>下一站 未知</h1> <!-- 使用半透明背景的文字 -->
-<h2>跟随心的节奏</h2> <!-- 使用半透明背景的文字 -->
+<img src="images/background6.jpg" alt="地铁图" class="background-image">
+<h1>下一站 未知</h1>
+<h2>跟随心的节奏</h2>
 <div class="content">
     <p>爱，无需强求。它如水般流淌，轻轻到来，温柔绽放。我们不知道下一站是哪里，但依然满怀期待。</p>
 </div>
 
-<!-- YouTube 嵌入的视频容器 -->
 <div id="video-container" style="display: none;">
-    <div id="player"></div> <!-- 用于加载 YouTube iframe -->
+    <div id="player"></div>
 </div>
 
-<!-- 当视频加载失败时显示跳转按钮 -->
 <div class="fallback-content" id="fallback-content" style="display: none;">
     <a href="https://www.youtube.com/watch?v=OzBqyJPzu9c&t" target="_blank" class="play-button">
         &#9654; 
     </a>
-</div> 
+</div>
 
-<!-- 通过 YouTube API 加载视频 -->
 <script>
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
@@ -165,13 +148,12 @@
 
     var player;
 
-    // YouTube API 加载成功后的回调函数
     function onYouTubeIframeAPIReady() {
         console.log('YouTube API loaded');
         player = new YT.Player('player', {
             height: '360',
             width: '640',
-            videoId: 'OzBqyJPzu9c', // YouTube 视频 ID
+            videoId: 'OzBqyJPzu9c',
             playerVars: {
                 autoplay: 1,          // 自动播放
                 controls: 0,          // 不显示控制条
@@ -186,20 +168,17 @@
         });
     }
 
-    // 视频准备好的回调函数
     function onVideoReady(event) {
         console.log('视频已准备好');
-        // 显示视频容器，确保视频加载并播放
-        document.getElementById('video-container').style.display = 'block';
+        document.getElementById('video-container').style.display = 'block'; // 显示视频容器
+        document.getElementById('fallback-content').style.display = 'none'; // 隐藏备用内容
     }
 
-    // 页面加载时自动开始加载视频
     window.onload = function() {
-        // 页面加载时直接开始加载视频，不需要 fallback-content
-        document.getElementById('video-container').style.display = 'block';
+        document.getElementById('video-container').style.display = 'block'; // 页面加载时显示视频容器
     };
 </script>
 
-
 </body>
-</html>  
+
+</html>
