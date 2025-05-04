@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>乘风2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&family=Dancing+Script&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+
+    <style>
+        /* 页面基础样式 */
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #e2f7ff, #d1c6ff);
+            color: #4b4b5d;
+            background-image: url('images/background2.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        /* 容器包裹整个页面 */
+        .container {
+            width: 100%; /* 宽度恢复为 100% */
+            margin: 0 auto;
+            padding-top: 0; /* 清除容器顶部的间距 */
+        }
+
+        /* 页眉样式 */
+        header {
+            width: 100%; /* 拉满宽度 */
+            background: linear-gradient(to right, rgba(100, 160, 255, 0.6), rgba(180, 120, 255, 0.55));
+            padding: 12px 25px; /* 调整页眉的垂直高度，减少30% */
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.24em; /* 缩小字体大小，减少30% */
+            margin: 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #9a7af0;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 1.2em; /* 调整文字的字体大小 */
+            margin-top: 8px; /* 调整文本的间距 */
+        }
+
+        /* 内容区域 */
+        .content {
+            max-width: 1080px; /* 更小的最大宽度 */
+            margin: 0 auto;
+            padding: 18px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 视频部分的外部容器 */
+        .video-wrapper {
+            width: 100%; /* 视频框宽度拉满 */
+            position: relative;
+            margin-bottom: 20px; /* 给视频框和文字部分增加间距 */
+        }
+
+        .video-background {
+            position: relative;
+            width: 100%;
+            padding-top: 40%; /* 调整高度占比，缩小视频框的高度 10% */
+            background-color: rgba(0, 0, 0, 0.8); /* 深色背景提升沉浸感 */
+            border-radius: 0; /* 去掉圆角 */
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5)); /* 更深的渐变效果 */
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5); /* 提升框的阴影效果 */
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0; /* 去掉圆角 */
+            overflow: hidden;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0; /* 保持视频框不带圆角 */ 
+        }
+
+        /* 文字部分的容器 */
+        .text-wrapper {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-wrapper p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        /* 页脚样式 */
+        footer {
+            width: 100%; /* 拉满宽度 */
+            background-color: #d1c6ff;
+            color: white;
+            padding: 18px 20px;
+            font-size: 1em;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            text-align: center;
+            margin-top: 40px; /* 页脚和内容之间的间距 */
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* 响应式布局 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em; /* 缩小标题字体 */
+            }
+
+            .content {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .video-wrapper {
+                margin-bottom: 20px; /* 保持视频框和文字间的间距 */
+            }
+
+            .video-background {
+                max-width: 100%; /* 视频背景框全屏 */
+                padding-top: 56.25%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em; /* 更小的字体 */
+            }
+
+            .video-wrapper {
+                margin-bottom: 15px; /* 调整间距 */
+            }
+
+            .video-background {
+                max-width: 100%; /* 视频框全屏 */
+                padding-top: 56.25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <h1>乘风2025</h1>
+        <p>一场充满挑战与成长的音乐与舞蹈盛宴，带你领略女性力量与梦想的无限可能</p> 
+    </header>
+
+    <div class="content">
+        <!-- 视频容器 -->
+        <div class="video-wrapper">
+            <div class="video-background">
+                <div class="video-container" id="video-container">
+                    <iframe src="https://player.bilibili.com/player.html?bvid=BV1Zp4y1X7z9&autoplay=1" frameborder="0" allowfullscreen="true"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- 占位图片，当视频无法加载时显示 -->
+        <div class="fallback-content" id="fallback-content">
+            <img src="images/placeholder.png" alt="视频加载失败" class="placeholder-image">
+            <a href="https://www.bilibili.com/video/BV1Zp4y1X7z9/" target="_blank" class="play-button">
+                &#9654; 跳转至视频
+            </a>
+        </div>
+
+        <!-- 文字内容部分 -->
+        <div class="text-wrapper">
+            <p>《乘风2025》是一场充满力量与突破的综艺盛宴，特别是在其中那句“乘风破浪，超越极限！”传达了对女性挑战自我、勇敢追求卓越的坚定信念。</p> 
+            <p>节目中，展现了许多女性以无畏姿态迎接挑战，突破自我界限，追求卓越。每个瞬间都充满了力量与激情，鼓励观众相信，无论面对什么困难，都能乘风破浪，迎接辉煌。</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 《乘风2025》页面背景风格 | 由 Epochfuture 团队制作</p>
+    </footer>
+</div>
+
+<script>
+    // 使用第三方 API 来检测用户 IP 是否在中国
+    function checkIP() {
+        fetch('https://ipinfo.io/json?token=YOUR_API_KEY') // 需要替换为你自己的 API Key
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.country === "CN") {
+                document.getElementById('fallback-content').style.display = 'block';
+                document.getElementById('video-container').style.display = 'none';
+            } else {
+                loadBilibiliVideo();
+            }
+        })
+        .catch(error => {
+            console.error('IP 信息获取失败:', error);
+        });
+    }
+
+    function loadBilibiliVideo() {
+        document.getElementById('video-container').style.display = 'block';
+        document.getElementById('fallback-content').style.display = 'none';
+    }
+
+    // 页面加载时检查 IP 地址
+    window.onload = checkIP;
+</script>
+
+</body>
+</html>

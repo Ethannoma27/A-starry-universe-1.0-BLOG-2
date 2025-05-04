@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我爱她的宇宙</title>
+    <style>
+        /* 基本布局 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* 背景宇宙动画 */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(10, 10, 40, 1) 40%, rgba(50, 50, 150, 1) 100%);
+            animation: backgroundAnimation 25s ease infinite;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* 星星 */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/background1.jpg') repeat center center;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        /* 文字样式 */
+        h1 {
+            font-size: 3rem;
+            font-family: 'Arial', sans-serif;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8), 0px 0px 20px rgba(255, 255, 255, 0.6);
+            margin: 20px;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8), 0px 0px 20px rgba(255, 255, 255, 0.6);
+            margin-top: 20px;
+        }
+
+        /* 爱心按钮 */
+        .heart-button {
+            font-size: 4rem;
+            cursor: pointer;
+            margin-top: 30px;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* 爱心点击动画 */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* 爱心光效 */
+        .love-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s;
+        }
+
+        /* 底部 */
+        .footer {
+            margin-top: 50px;
+            font-size: 1.2rem;
+            color: #fff;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8), 0px 0px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        
+            /* 流星效果 */
+.meteor {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 3px; /* 增加流星的高度，使头部不那么重 */
+  width: 20px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  opacity: 0.8;
+  transform-origin: top left;
+  transform: rotate(45deg);
+  animation: meteorAnimation 12s linear infinite;
+}
+
+/* 流星尾巴效果 */
+.meteor::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80px;  /* 延长尾巴的起始位置 */
+  width: 80px;  /* 增加尾巴的长度 */
+  height: 3px;  /* 增加尾巴的高度，使尾巴看起来更加自然 */
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  animation: tailEffect 2s linear infinite;  /* 使尾巴扩展更慢 */
+}
+
+/* 流星的动画：缓慢的从左上角到右下角 */
+@keyframes meteorAnimation {
+  0% {
+    transform: translate(-15vw, -15vh) rotate(45deg);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(100vw, 100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* 流星尾巴动画 */
+@keyframes tailEffect {
+  0% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(2);  /* 让尾巴变得更自然 */
+  }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 背景星空 -->
+        <div class="background"></div>
+
+        <!-- 星星效果 -->
+        <div class="stars"></div>
+
+        <!-- 主要内容区域 -->
+        <div class="content">
+            <h1>我爱你，平淡生活里的诗</h1>
+            <p class="message">生活很平淡，但爱你，依然是平淡生活里一首美丽的诗。</p>
+            <p class="message">虽然我现在也拿不出多么珍贵的礼物去证明我的爱有多珍贵，但只要你能够感受到我爱你的心。</p>
+        </div>
+
+        <!-- 爱心按钮 -->
+        <div class="heart-button" onclick="heartClick()">
+            ❤️
+        </div>
+
+        <!-- 互动效果 -->
+        <div id="loveEffect" class="love-effect"></div>
+
+        <!-- 底部留言 -->
+        <div class="footer">
+            <p>无论世界怎样变化，我的心始终如一。</p>
+        </div>
+    </div>
+
+    <script>
+        // 点击爱心触发动画
+        function heartClick() {
+            const effect = document.getElementById('loveEffect');
+            effect.style.opacity = 1;
+
+            // 创建爱心扩散效果
+            setTimeout(() => {
+                effect.style.opacity = 0;
+            }, 1000);
+        }
+
+        // 创建流星的函数
+        function createMeteor() {
+            const meteor = document.createElement('div');
+            meteor.classList.add('meteor');
+
+            // 随机设置流星的初始位置
+            const startX = Math.random() * -10;  // 从屏幕左侧外面开始
+            const startY = Math.random() * -10;  // 从屏幕上方外面开始
+            meteor.style.left = `${startX}vw`;
+            meteor.style.top = `${startY}vh`;
+
+            document.body.appendChild(meteor);
+
+            // 流星动画结束后移除
+            meteor.addEventListener('animationend', () => {
+                meteor.remove();
+            });
+        }
+     
+
+
+
+
+                // 控制流星生成的节奏和数量
+                let meteorCount = 0;
+        const maxMeteors = 2; // 限制最多只生成2颗流星
+
+        function controlMeteors() {
+            // 生成流星之前检查当前流星的数量
+            const currentMeteors = document.querySelectorAll('.meteor').length;
+
+            // 只允许在屏幕上存在最多maxMeteors数量的流星
+            if (currentMeteors < maxMeteors) {
+                createMeteor();
+            }
+        }
+
+        // 每 8 秒生成一个流星，控制流星的出现节奏
+        setInterval(controlMeteors, 8000);  // 每 8 秒生成一个流星
+    </script>
+
+</body>
+</html>
