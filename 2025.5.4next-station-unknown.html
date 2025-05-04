@@ -61,6 +61,7 @@
             border-radius: 10px;
             animation: fadeIn 1.8s ease-in-out 0.5s;
             z-index: 1;
+
         }
 
         .content {
@@ -281,17 +282,14 @@
         }
 
 
-/* 适应不同屏幕尺寸 */
-@media (max-width: 768px) {
+      /* 适应不同屏幕尺寸 */
+      @media (max-width: 768px) {
     h1 {
-        font-size: 2.8rem;
-        padding: 8px 20px;
-        position: absolute; /* 设置为绝对定位 */
-        top: 10%; /* 调整为适当的顶部偏移 */
-        left: 50%; /* 居中 */
-        transform: translateX(-50%); /* 使元素居中 */
-        margin-top: 0; /* 确保没有额外的 margin-top */
-    }
+           font-size: 2.8rem;
+           padding: 8px 20px;
+           top: -150px;
+            }
+
 
     h2 {
         font-size: 1.4rem;
@@ -367,8 +365,17 @@
     </audio>
 
     <script>
- window.onload = function () {
+window.onload = function () {
     const audio = document.getElementById("myAudio");
+
+    // 监听音频缓冲状态
+    audio.addEventListener("waiting", function() {
+        console.log("音频正在缓冲...");
+    });
+
+    audio.addEventListener("playing", function() {
+        console.log("音频开始播放");
+    });
 
     // 检查音频是否加载完毕
     audio.addEventListener("canplaythrough", function () {
@@ -393,7 +400,7 @@
         }
     });
 };
-</script>
+</script> 
 </body>
 
-</html> 
+</html>  
