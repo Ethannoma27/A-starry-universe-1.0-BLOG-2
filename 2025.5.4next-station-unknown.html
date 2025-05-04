@@ -135,11 +135,15 @@
     }
 
     .background-image {
-        width: 90%;
-        height: auto;
-        border-radius: 15px;
-        top: calc(50% - 50px); /* 向上移动 30px */
-    }
+    width: 90%;                 /* 宽度仍然是 90% */
+    height: 80%;                /* 垂直缩小 20% (原为 auto) */
+    top: calc(50% - 50px);      /* 保持向上偏移 30px */
+    border-radius: 15px;
+    opacity: 0.6;
+    z-index: -1;
+    transform: translate(-50%, -50%); /* 保持居中 */
+}
+
 
     footer {
         font-size: 0.85rem;
@@ -200,5 +204,8 @@
 </body>
 
 </html>
+
+
+
 
 
