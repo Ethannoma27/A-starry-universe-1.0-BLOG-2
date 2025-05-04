@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>下一站 보고싶다</title>
 
-    <!-- 引入所需字体 -->
+    <!-- 提前连接字体资源，提升加载速度 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- 引入字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
 
     <style>
@@ -25,6 +28,10 @@
             position: relative;
         }
 
+        h1, h2, .content {
+            will-change: opacity, transform;
+        }
+
         h1 {
             font-family: 'Dancing Script', cursive;
             font-size: 4.5rem;
@@ -36,7 +43,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             border-radius: 10px;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 3s ease-in-out;
+            animation: fadeIn 1.8s ease-in-out;
             z-index: 1;
             position: relative;
             top: -75px;
@@ -53,7 +60,7 @@
             padding: 8px 20px;
             background-color: rgba(0, 0, 0, 0.6);
             border-radius: 10px;
-            animation: fadeIn 3s ease-in-out 1s;
+            animation: fadeIn 1.8s ease-in-out 0.5s;
             z-index: 1;
         }
 
@@ -68,7 +75,7 @@
             text-align: center;
             font-family: 'Pacifico', cursive;
             opacity: 0;
-            animation: fadeInContent 3s ease-in-out 2s forwards;
+            animation: fadeInContent 1.8s ease-in-out 1.2s forwards;
             z-index: 1;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
         }
@@ -119,7 +126,7 @@
             h1 {
                 font-size: 2.8rem;
                 padding: 8px 20px;
-                top: -150px; /* 原为 -75px，向上移 75px */
+                top: -150px;
             }
 
             h2 {
@@ -139,7 +146,7 @@
                 width: 90%;
                 height: auto;
                 border-radius: 15px;
-                top: calc(50% - 50px); /* 向上移动 30px */
+                top: calc(50% - 50px);
             }
 
             footer {
@@ -184,7 +191,7 @@
                     audio.hasPlayed = true;
                     audio.play()
                         .then(() => {
-                            audio.muted = false; // 解除静音
+                            audio.muted = false;
                             console.log("✅ 音频自动播放成功并解除静音");
                         })
                         .catch((err) => {
@@ -197,7 +204,6 @@
 
 </body>
 </html>
-
 
 
 
