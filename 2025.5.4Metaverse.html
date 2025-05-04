@@ -73,7 +73,7 @@
             line-height: 2;
             max-width: 800px;
             margin-left: 5vw;
-            transform: translateY(-20%);
+            transform: translateY(-35%);
         }
 
         .content h1 {
@@ -130,18 +130,27 @@
             margin-top: 10px;
         }
 
-        /* 底部留言 */
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1rem;
-            color: white;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-            z-index: 1;
-        }
+       /* 底部留言 */
 
+         .footer {
+       position: absolute;
+       bottom: 20px;
+       left: 50%;
+       transform: translateX(-50%) scaleX(1.1); /* 通过 scaleX 扩展宽度 */
+       font-size: 1rem;
+       color: white;
+       text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+       z-index: 1;
+       width: 100%; /* 宽度为父容器的 100% */
+       max-width: none; /* 禁止最大宽度限制 */
+       text-align: center; /* 保证文字居中 */
+       padding: 0 20px; /* 增加左右内边距 */
+       white-space: nowrap; /* 防止文字换行 */
+       overflow: hidden; /* 隐藏溢出的内容 */
+       text-overflow: ellipsis; /* 用省略号表示超出的部分 */
+}
+
+    
         /* 钢琴动图 */
         .piano-image {
             position: absolute;
@@ -151,6 +160,7 @@
             width: 300px;
             height: auto;
             z-index: 1;
+            opacity: 0.6;
         }
 
      /* 移动端优化 */
@@ -247,7 +257,8 @@
 
     <!-- 底部留言 -->
     <div class="footer">
-        <p>Youth is a promise with no regrets, and I still love you as I did like beginning</p>
+        
+        <p>Youth is a promise with no regrets,without you life could never be so beautiful,so I need you</p>
     </div>
 
     <script>
