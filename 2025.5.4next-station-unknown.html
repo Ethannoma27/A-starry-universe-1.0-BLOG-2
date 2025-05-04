@@ -136,17 +136,6 @@
         }
 
     </style>
-      <!-- YouTube 嵌入的视频容器 -->
-      <div id="video-container" style="display: none;">
-        <div id="player"></div> <!-- 用于加载 YouTube iframe -->
-    </div>
-
-       <!-- 当视频加载失败时显示跳转按钮 -->
-       <div class="fallback-content" id="fallback-content" style="display: none;">
-        <a href="https://www.youtube.com/watch?v=OzBqyJPzu9c&t=106s" target="_blank" class="play-button">
-            &#9654; 跳转至视频
-        </a>
-    </div> 
 
 <img src="images/background6.jpg" alt="地铁图" class="background-image"> <!-- 背景图片 -->
 <h1>下一站 未知</h1> <!-- 使用半透明背景的文字 -->
@@ -155,7 +144,19 @@
     <p>爱，无需强求。它如水般流淌，轻轻到来，温柔绽放。我们不知道下一站是哪里，但依然满怀期待。</p>
 </div>
 
-<!-- YouTube API -->
+<!-- YouTube 嵌入的视频容器 -->
+<div id="video-container" style="display: none;">
+    <div id="player"></div> <!-- 用于加载 YouTube iframe -->
+</div>
+
+<!-- 当视频加载失败时显示跳转按钮 -->
+<div class="fallback-content" id="fallback-content" style="display: none;">
+    <a href="https://www.youtube.com/watch?v=OzBqyJPzu9c&t" target="_blank" class="play-button">
+        &#9654; 
+    </a>
+</div> 
+
+<!-- 通过 YouTube API 加载视频 -->
 <script>
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
@@ -163,7 +164,6 @@
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     var player;
-    var videoLoaded = false;
 
     // YouTube API 加载成功后的回调函数
     function onYouTubeIframeAPIReady() {
@@ -181,7 +181,6 @@
                 start: 0              // 从 0 秒开始播放
             },
             events: {
-                'onError': onVideoError,
                 'onReady': onVideoReady
             }
         });
@@ -190,29 +189,17 @@
     // 视频准备好的回调函数
     function onVideoReady(event) {
         console.log('视频已准备好');
-        document.getElementById('fallback-content').style.display = 'none';
+        // 显示视频容器，确保视频加载并播放
         document.getElementById('video-container').style.display = 'block';
     }
 
-    // 视频加载失败的回调函数
-    function onVideoError(event) {
-        console.log('视频加载失败，显示占位图片和播放按钮');
-        document.getElementById('fallback-content').style.display = 'block';
-        document.getElementById('video-container').style.display = 'none';
-    }
-
-    // 加载视频函数
-    function loadVideo() {
-        if (!videoLoaded) {
-            player.loadVideoById('OzBqyJPzu9c');  // 使用 YouTube 视频 ID
-            videoLoaded = true;
-            document.getElementById('fallback-content').style.display = 'none';
-            document.getElementById('video-container').style.display = 'block';
-        }
-    }
+    // 页面加载时自动开始加载视频
+    window.onload = function() {
+        // 页面加载时直接开始加载视频，不需要 fallback-content
+        document.getElementById('video-container').style.display = 'block';
+    };
 </script>
+
+
 </body>
-</html> 
-
-
-
+</html>  
