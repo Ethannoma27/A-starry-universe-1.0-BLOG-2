@@ -143,9 +143,6 @@
     </a>
 </div>
 
-<!-- 解除静音按钮和静音提示 -->
-<button id="unmuteButton">解除静音</button>
-<div id="mute-warning" style="display:none;">视频正在静音</div>
 
 <script>
     // 使用第三方 API 来检测用户 IP 是否在中国
@@ -208,23 +205,23 @@
 
     function loadVideo() {
         if (!videoLoaded) {
-            player.loadVideoById('OYea3L9T_3U');
+            player.loadVideoById('OzBqyJPzu9c');
             videoLoaded = true;
             document.getElementById('fallback-content').style.display = 'none';
             document.getElementById('video-container').style.display = 'block';
         }
     }
 
-    // 解除静音按钮
-    document.getElementById('unmuteButton').addEventListener('click', function() {
-        if (player) {
-            player.unMute(); // 解除静音
-            player.playVideo(); // 开始播放视频
-            this.style.display = 'none'; // 隐藏解除静音按钮
-            document.getElementById('mute-warning').style.display = 'none'; // 隐藏静音提示
-        }
-    });
-</script>
 
+        // 解除静音按钮
+        document.getElementById('unmuteButton').addEventListener('click', function() {
+            if (player) {
+                player.unMute();
+                this.style.display = 'none';
+                document.getElementById('mute-warning').style.display = 'none';  // 隐藏提示
+            }
+        });
+    </script>
 
-
+</body>
+</html>
