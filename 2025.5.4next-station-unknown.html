@@ -114,12 +114,11 @@
             }
         }
 
-        /* 手机端优化 */
-@media (max-width: 768px) {
+        @media (max-width: 768px) {
     h1 {
         font-size: 2.8rem;
         padding: 8px 20px;
-        top: -40px;
+        top: -125px; /* 原为 -75px，向上移 50px */
     }
 
     h2 {
@@ -139,6 +138,7 @@
         width: 90%;
         height: auto;
         border-radius: 15px;
+        top: calc(50% - 50px); /* 向上移动 30px */
     }
 
     footer {
@@ -152,6 +152,7 @@
         padding: 10px;
     }
 }
+
 
     </style>
 </head>
@@ -172,31 +173,29 @@
     <!-- 隐藏音频播放器控件，并自动播放 -->
     <audio id="myAudio" autoplay muted preload="auto" hidden>
         <source src="mp3/next-station-unknown.mp3" type="audio/mp3">
-        您的浏览器不支持音频播放。
     </audio>
-
+    
     <script>
-        window.onload = function() {
-            var audio = document.getElementById('myAudio');
-            audio.preload = "auto";
-
-            // 检查是否可以播放
-            audio.addEventListener('canplaythrough', function () {
+        window.onload = function () {
+            const audio = document.getElementById("myAudio");
+    
+            // 检查音频是否加载完毕
+            audio.addEventListener("canplaythrough", function () {
                 if (!audio.hasPlayed) {
                     audio.hasPlayed = true;
-
-                    audio.play().then(function () {
-                        audio.muted = false;
-                        console.log("音频自动播放并解除静音");
-                    }).catch(function (error) {
-                        console.log("自动播放失败，原因:", error);
-                    });
-                } else {
-                    console.log("音频已经播放过，跳过");
+                    audio.play()
+                        .then(() => {
+                            audio.muted = false; // 解除静音
+                            console.log("✅ 音频自动播放成功并解除静音");
+                        })
+                        .catch((err) => {
+                            console.warn("❌ 自动播放失败：", err);
+                        });
                 }
             });
-        }
+        };
     </script>
+    
 
 </body>
 
