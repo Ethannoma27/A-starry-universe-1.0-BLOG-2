@@ -130,55 +130,101 @@
     <p>爱，无需强求。它如水般流淌，轻轻到来，温柔绽放。我们不知道下一站是哪里，但依然满怀期待。</p>
 </div>
 
-<div id="video-container" style="display: none;">
-    <div id="player"></div>
-</div>
+<div class="content">
+    <!-- 视频播放器容器 -->
+    <div class="video-container" id="video-container">
+        <div id="player"></div>
+    </div>
 
-<div class="fallback-content" id="fallback-content" style="display: none;">
-    <a href="https://www.youtube.com/watch?v=OzBqyJPzu9c&t" target="_blank" class="play-button">
-        &#9654; 
-    </a>
-</div>
+    <!-- 占位图片，当视频无法加载时显示 -->
+    <div class="fallback-content" id="fallback-content">
 
-<script>
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        <a href="https://www.youtube.com/watch?v=OzBqyJPzu9c" target="_blank" class="play-button">
+            &#9654; 跳转至视频
+        </a>
+    </div> 
 
-    var player;
+    <script>
+        // 使用第三方 API 来检测用户 IP 是否在中国
+        function checkIP() {
+            fetch('https://ipinfo.io/json?token=YOUR_API_KEY')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.country === "CN") {
+                    document.getElementById('fallback-content').style.display = 'block';
+                    document.getElementById('video-container').style.display = 'none';
+                } else {
+                    loadYouTubeVideo();
+                }
+            })
+            .catch(error => {
+                console.error('IP 信息获取失败:', error);
+            });
+        }
 
-    function onYouTubeIframeAPIReady() {
-        console.log('YouTube API loaded');
-        player = new YT.Player('player', {
-            height: '360',
-            width: '640',
-            videoId: 'OzBqyJPzu9c',
-            playerVars: {
-                autoplay: 1,          // 自动播放
-                controls: 0,          // 不显示控制条
-                mute: 1,              // 默认静音
-                showinfo: 0,          // 不显示视频信息
-                rel: 0,               // 不显示相关视频
-                start: 0              // 从 0 秒开始播放
-            },
-            events: {
-                'onReady': onVideoReady
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        var videoLoaded = false;
+
+        function onYouTubeIframeAPIReady() {
+            console.log('YouTube API loaded');
+            player = new YT.Player('player', {
+                height: '360',
+                width: '640',
+                videoId: 'OzBqyJPzu9c',
+                playerVars: {
+                    autoplay: 1,
+                    controls: 1,
+                    mute: 1, // 默认静音
+                    showinfo: 0,
+                    rel: 0
+                },
+                events: {
+                    'onError': onVideoError,
+                    'onReady': onVideoReady
+                }
+            });
+        }
+
+        function onVideoReady(event) {
+            console.log('视频已准备好');
+            document.getElementById('fallback-content').style.display = 'none';
+            document.getElementById('video-container').style.display = 'block';
+        }
+
+        function onVideoError(event) {
+            console.log('视频加载失败，显示占位图片和播放按钮');
+            document.getElementById('fallback-content').style.display = 'block';
+            document.getElementById('video-container').style.display = 'none';
+        }
+
+        function loadVideo() {
+            if (!videoLoaded) {
+                player.loadVideoById('OYea3L9T_3U');
+                videoLoaded = true;
+                document.getElementById('fallback-content').style.display = 'none';
+                document.getElementById('video-container').style.display = 'block';
+            }
+        }
+
+        // 解除静音按钮
+        document.getElementById('unmuteButton').addEventListener('click', function() {
+            if (player) {
+                player.unMute();
+                this.style.display = 'none';
+                document.getElementById('mute-warning').style.display = 'none';  // 隐藏提示
             }
         });
-    }
-
-    function onVideoReady(event) {
-        console.log('视频已准备好');
-        document.getElementById('video-container').style.display = 'block'; // 显示视频容器
-        document.getElementById('fallback-content').style.display = 'none'; // 隐藏备用内容
-    }
-
-    window.onload = function() {
-        document.getElementById('video-container').style.display = 'block'; // 页面加载时显示视频容器
-    };
-</script>
+    </script>
 
 </body>
-
 </html>
+
+
+
+
