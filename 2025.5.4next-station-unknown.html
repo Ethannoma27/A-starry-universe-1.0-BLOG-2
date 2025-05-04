@@ -136,93 +136,83 @@
         }
 
     </style>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- YouTube 嵌入的视频（透明 iframe） -->
-    <div id="video-container" style="display: none;">
+      <!-- YouTube 嵌入的视频容器 -->
+      <div id="video-container" style="display: none;">
         <div id="player"></div> <!-- 用于加载 YouTube iframe -->
     </div>
 
-    <div id="fallback-content">
-        <p>视频加载失败，稍后重试</p>
+       <!-- 当视频加载失败时显示跳转按钮 -->
+       <div class="fallback-content" id="fallback-content" style="display: none;">
+        <a href="https://www.youtube.com/watch?v=OzBqyJPzu9c&t=106s" target="_blank" class="play-button">
+            &#9654; 跳转至视频
+        </a>
     </div> 
 
-    <img src="images/background6.jpg" alt="地铁图" class="background-image"> <!-- 背景图片 -->
-    <h1>下一站 未知</h1> <!-- 使用半透明背景的文字 -->
-    <h2>跟随心的节奏</h2> <!-- 使用半透明背景的文字 -->
-    <div class="content">
-        <p>爱，无需强求。它如水般流淌，轻轻到来，温柔绽放。我们不知道下一站是哪里，但依然满怀期待。</p>
-    </div>
-    
-     <!-- YouTube API -->
-     <script>
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+<img src="images/background6.jpg" alt="地铁图" class="background-image"> <!-- 背景图片 -->
+<h1>下一站 未知</h1> <!-- 使用半透明背景的文字 -->
+<h2>跟随心的节奏</h2> <!-- 使用半透明背景的文字 -->
+<div class="content">
+    <p>爱，无需强求。它如水般流淌，轻轻到来，温柔绽放。我们不知道下一站是哪里，但依然满怀期待。</p>
+</div>
 
-        var player;
-        var videoLoaded = false;
+<!-- YouTube API -->
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        function onYouTubeIframeAPIReady() {
-            console.log('YouTube API loaded');
-            player = new YT.Player('player', {
-                height: '360',
-                width: '640',
-                videoId: 'OzBqyJPzu9c',  // YouTube 视频 ID
-                playerVars: {
-                    autoplay: 1,      // 自动播放
-                    controls: 0,      // 不显示控制条
-                    mute: 1,          // 默认静音
-                    showinfo: 0,      // 不显示视频信息
-                    rel: 0            // 不显示相关视频
-                },
-                events: {
-                    'onError': onVideoError,
-                    'onReady': onVideoReady
-                }
-            });
-        }
+    var player;
+    var videoLoaded = false;
 
-        function onVideoReady(event) {
-            console.log('视频已准备好');
+    // YouTube API 加载成功后的回调函数
+    function onYouTubeIframeAPIReady() {
+        console.log('YouTube API loaded');
+        player = new YT.Player('player', {
+            height: '360',
+            width: '640',
+            videoId: 'OzBqyJPzu9c', // YouTube 视频 ID
+            playerVars: {
+                autoplay: 1,          // 自动播放
+                controls: 0,          // 不显示控制条
+                mute: 1,              // 默认静音
+                showinfo: 0,          // 不显示视频信息
+                rel: 0,               // 不显示相关视频
+                start: 0              // 从 0 秒开始播放
+            },
+            events: {
+                'onError': onVideoError,
+                'onReady': onVideoReady
+            }
+        });
+    }
+
+    // 视频准备好的回调函数
+    function onVideoReady(event) {
+        console.log('视频已准备好');
+        document.getElementById('fallback-content').style.display = 'none';
+        document.getElementById('video-container').style.display = 'block';
+    }
+
+    // 视频加载失败的回调函数
+    function onVideoError(event) {
+        console.log('视频加载失败，显示占位图片和播放按钮');
+        document.getElementById('fallback-content').style.display = 'block';
+        document.getElementById('video-container').style.display = 'none';
+    }
+
+    // 加载视频函数
+    function loadVideo() {
+        if (!videoLoaded) {
+            player.loadVideoById('OzBqyJPzu9c');  // 使用 YouTube 视频 ID
+            videoLoaded = true;
             document.getElementById('fallback-content').style.display = 'none';
             document.getElementById('video-container').style.display = 'block';
         }
-
-        function onVideoError(event) {
-            console.log('视频加载失败，显示占位图片和播放按钮');
-            document.getElementById('fallback-content').style.display = 'block';
-            document.getElementById('video-container').style.display = 'none';
-        }
-
-        function loadVideo() {
-            if (!videoLoaded) {
-                player.loadVideoById('OzBqyJPzu9c');  // 使用 YouTube 视频 ID
-                videoLoaded = true;
-                document.getElementById('fallback-content').style.display = 'none';
-                document.getElementById('video-container').style.display = 'block';
-            }
-        }
-
-        // 解除静音按钮
-        document.getElementById('unmuteButton').addEventListener('click', function() {
-            if (player) {
-                player.unMute();
-                this.style.display = 'none';
-                document.getElementById('mute-warning').style.display = 'none';  // 隐藏提示
-            }
-        });
-    </script>
+    }
+</script>
 </body>
-</html>
-
-
-
-
-
-
+</html> 
 
 
 
