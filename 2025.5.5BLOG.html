@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>书法动态效果</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'KaiTi', serif;
+      background: url('images/calligraphy.png') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      color: #2c3e50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      position: relative;
+      max-width: 900px;
+      width: 90%;
+      text-align: center;
+      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.75);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    .calligraphy {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .calligraphy path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: writePath 6s ease-out forwards;
+      stroke: black;
+      stroke-width: 2;
+      fill: transparent;
+      opacity: 0;
+    }
+
+    @keyframes writePath {
+      0% {
+        stroke-dashoffset: 1000;
+        opacity: 0;
+      }
+      50% {
+        stroke-dashoffset: 500;
+        opacity: 0.5;
+      }
+      100% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+    }
+
+    .subtext {
+      font-size: 1.3rem;
+      color: #555;
+      font-style: italic;
+      margin: 20px 0;
+    }
+
+    .ink-blot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.15);
+      animation: inkDrop 8s ease-in-out infinite;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    @keyframes inkDrop {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 0.1;
+      }
+      50% {
+        width: 250px;
+        height: 250px;
+        opacity: 0.25;
+      }
+      100% {
+        width: 0;
+        height: 0;
+        opacity: 0.1;
+      }
+    }
+
+    .watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60%;
+      height: 60%;
+      transform: translate(-50%, -50%);
+      background: url('images/calligraphy.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.15;
+      z-index: 0;
+      animation: fadeWatermark 12s ease-in-out infinite;
+    }
+
+    @keyframes fadeWatermark {
+      0%, 100% {
+        opacity: 0.15;
+      }
+      50% {
+        opacity: 0.3;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ink-blot"></div>
+  <div class="watermark"></div>
+    <div class="container">
+      <div class="subtext">健康生活才是对自己最好的爱</div>
+  
+      <!-- SVG 书法展示 -->
+      <object type="image/svg+xml" data="images/calligraphy.svg" class="calligraphy"></object>
+  
+      <div class="subtext">希望30+奔4的我们更懂得好好爱自己</div>
+    </div>
+  </body>
+  </html>
