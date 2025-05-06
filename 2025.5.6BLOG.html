@@ -151,7 +151,9 @@
 <header>
       <!-- 音乐播放器嵌入到页眉 -->
       <div class="music-player-container">
-        <iframe class="music-player" id="music-player" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/will-davison-10/mc-hotdog-mv-1%3Fin%3Dbill-hou%2Fsets%2Fchinese-rap&color=%23333&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true" allow="autoplay"></iframe>
+        <iframe class="music-player" id="music-player" 
+          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/will-davison-10/mc-hotdog-mv-1%3Fin%3Dbill-hou%2Fsets%2Fchinese-rap&color=%23333&auto_play=true&mute=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true" 
+          allow="autoplay"></iframe>
     </div>
     <h1>无厘头人生：放飞自我，远离束缚</h1>
 </header>
@@ -178,12 +180,13 @@
     window.onload = function() {
         var iframe = document.getElementById('music-player');
 
-        // 确保播放器在加载时自动播放
-        // 发送播放命令到 iframe 内部播放器
-        iframe.contentWindow.postMessage('{"method":"play"}', '*');
+        // 延迟1秒钟，确保页面和iframe加载完成后尝试播放
+        setTimeout(function() {
+            // 发送播放命令到 iframe 内部播放器
+            iframe.contentWindow.postMessage('{"method":"play"}', '*');
+        }, 1000);
 
-        // 另外，如果播放器在加载后未能自动播放，可以使用如下的处理来兼容不同的浏览器限制：
-        // 尝试触发用户交互后再播放
+        // 另外，如果播放器在加载后未能自动播放，可以尝试模拟点击播放按钮
         iframe.onload = function() {
             var player = iframe.contentWindow.document.querySelector('button[data-action="play"]');
             if (player) {
@@ -193,6 +196,10 @@
     };
 </script>
 
-
 </body>
 </html>
+
+
+
+
+
