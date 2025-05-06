@@ -149,9 +149,9 @@
 <body>
 
 <header>
-    <!-- 音乐播放器嵌入到页眉 -->
-    <div class="music-player-container">
-        <iframe class="music-player" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/will-davison-10/mc-hotdog-mv-1%3Fin%3Dbill-hou%2Fsets%2Fchinese-rap&color=%23333&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+      <!-- 音乐播放器嵌入到页眉 -->
+      <div class="music-player-container">
+        <iframe class="music-player" id="music-player" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/will-davison-10/mc-hotdog-mv-1%3Fin%3Dbill-hou%2Fsets%2Fchinese-rap&color=%23333&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true" allow="autoplay"></iframe>
     </div>
     <h1>无厘头人生：放飞自我，远离束缚</h1>
 </header>
@@ -173,18 +173,26 @@
     <p>&copy; 2025 Epochfuture. All Rights Reserved.</p>
 </footer>
 
-
 <script>
-    // JavaScript来处理背景音乐自动播放
-    var audio = document.getElementById('background-music');
+    // 优化自动播放
     window.onload = function() {
-        // 尝试自动播放音乐并解决静音问题
-        audio.muted = false;  // 确保音乐没有静音
-        audio.play().catch(function(error) {
-            console.log("音乐播放失败，可能是由于浏览器的自动播放策略：" + error);
-        });
+        var iframe = document.getElementById('music-player');
+
+        // 确保播放器在加载时自动播放
+        // 发送播放命令到 iframe 内部播放器
+        iframe.contentWindow.postMessage('{"method":"play"}', '*');
+
+        // 另外，如果播放器在加载后未能自动播放，可以使用如下的处理来兼容不同的浏览器限制：
+        // 尝试触发用户交互后再播放
+        iframe.onload = function() {
+            var player = iframe.contentWindow.document.querySelector('button[data-action="play"]');
+            if (player) {
+                player.click(); // 模拟点击播放按钮来触发自动播放
+            }
+        };
     };
 </script>
+
 
 </body>
 </html>
