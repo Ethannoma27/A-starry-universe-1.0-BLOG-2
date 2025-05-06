@@ -176,21 +176,27 @@
 </footer>
 
 <script>
-    // 优化自动播放
+    // 优化自动播放和模拟点击
     window.onload = function() {
         var iframe = document.getElementById('music-player');
 
         // 延迟1秒钟，确保页面和iframe加载完成后尝试播放
         setTimeout(function() {
-            // 发送播放命令到 iframe 内部播放器
             iframe.contentWindow.postMessage('{"method":"play"}', '*');
         }, 1000);
 
-        // 另外，如果播放器在加载后未能自动播放，可以尝试模拟点击播放按钮
+        // 模拟点击播放按钮，并设置定时器来定期模拟点击
+        setInterval(function() {
+            var player = iframe.contentWindow.document.querySelector('button[data-action="play"]');
+            if (player && !player.disabled) {
+                player.click(); // 模拟点击播放按钮
+            }
+        }, 3000);  // 每3秒尝试点击一次
+
         iframe.onload = function() {
             var player = iframe.contentWindow.document.querySelector('button[data-action="play"]');
             if (player) {
-                player.click(); // 模拟点击播放按钮来触发自动播放
+                player.click(); // 初始加载时尝试点击
             }
         };
     };
