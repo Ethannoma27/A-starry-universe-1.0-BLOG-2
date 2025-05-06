@@ -149,68 +149,63 @@
 <body>
 
 <header>
-        <!-- 音乐播放器嵌入到页眉 -->
-        <div class="music-player-container">
-            <iframe class="music-player" id="music-player" 
-              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/will-davison-10/mc-hotdog-mv-1%3Fin%3Dbill-hou%2Fsets%2Fchinese-rap&color=%23333&auto_play=true&mute=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true" 
-              allow="autoplay"></iframe>
-        </div>
-        <h1>无厘头人生：放飞自我，远离束缚</h1>
-    </header>
-    
-    <div class="content">
-        <h2>逃离资本的迷幻世界</h2>
-        <p>我们总是被社会的框架所束缚，在资本的游戏中追求所谓的成功和财富。然而，什么是真正的自由？逃离这些束缚，放下焦虑与攀比，人生的意义不再是外界标准的反映，而是内心的自我探索。</p>
-    
-        <p>今天，我们来挑战传统的认知，摆脱固有的价值观。去中心化不仅仅是一种技术，它代表着彻底的自我主权——你可以做你自己，感受真实的世界，而不是被资本和权力牵着走。</p>
-    
-        <div class="epoch-log">2025.5.6 日志 作者：Epochfuture Team</div>
-    
-        <div class="image-container">
-            <img src="images/reasonless.jpg" alt="无厘头人生">
-        </div>
+      <!-- 音乐播放器嵌入到页眉 -->
+      <div class="music-player-container">
+        <iframe class="music-player" id="music-player" 
+          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/will-davison-10/mc-hotdog-mv-1%3Fin%3Dbill-hou%2Fsets%2Fchinese-rap&color=%23333&auto_play=true&mute=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true" 
+          allow="autoplay"></iframe>
     </div>
-    
-    <footer>
-        <p>&copy; 2025 Epochfuture. All Rights Reserved.</p>
-    </footer>
-    
-    <script>
-        // 优化自动播放和模拟点击
-        window.onload = function() {
-            var iframe = document.getElementById('music-player');
-            var startTime = 50; // 设置播放起始时间为50秒
-    
-            // 延迟1秒钟，确保页面和iframe加载完成后尝试播放
-            setTimeout(function() {
-                // 发送播放命令到 iframe 内部播放器
-                iframe.contentWindow.postMessage('{"method":"play"}', '*');
-    
-                // 发送seek命令跳转到50秒
-                iframe.contentWindow.postMessage(`{"method":"seekTo","value":${startTime}}`, '*');
-            }, 1000);
-    
-            // 模拟点击播放按钮，并设置定时器来定期模拟点击
-            setInterval(function() {
-                var player = iframe.contentWindow.document.querySelector('button[data-action="play"]');
-                if (player && !player.disabled) {
-                    player.click(); // 模拟点击播放按钮
-                }
-            }, 3000);  // 每3秒尝试点击一次
-    
-            iframe.onload = function() {
-                var player = iframe.contentWindow.document.querySelector('button[data-action="play"]');
-                if (player) {
-                    player.click(); // 初始加载时尝试点击
-                }
-            };
+    <h1>无厘头人生：放飞自我，远离束缚</h1>
+</header>
+
+<div class="content">
+    <h2>逃离资本的迷幻世界</h2>
+    <p>我们总是被社会的框架所束缚，在资本的游戏中追求所谓的成功和财富。然而，什么是真正的自由？逃离这些束缚，放下焦虑与攀比，人生的意义不再是外界标准的反映，而是内心的自我探索。</p>
+
+    <p>今天，我们来挑战传统的认知，摆脱固有的价值观。去中心化不仅仅是一种技术，它代表着彻底的自我主权——你可以做你自己，感受真实的世界，而不是被资本和权力牵着走。</p>
+
+    <div class="epoch-log">2025.5.6 日志 作者：Epochfuture Team</div>
+
+    <div class="image-container">
+        <img src="images/reasonless.jpg" alt="无厘头人生">
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Epochfuture. All Rights Reserved.</p>
+</footer>
+
+<script>
+    // 优化自动播放和模拟点击
+    window.onload = function() {
+        var iframe = document.getElementById('music-player');
+
+        // 延迟1秒钟，确保页面和iframe加载完成后尝试播放
+        setTimeout(function() {
+            iframe.contentWindow.postMessage('{"method":"play"}', '*');
+        }, 1000);
+
+        // 模拟点击播放按钮，并设置定时器来定期模拟点击
+        setInterval(function() {
+            var player = iframe.contentWindow.document.querySelector('button[data-action="play"]');
+            if (player && !player.disabled) {
+                player.click(); // 模拟点击播放按钮
+            }
+        }, 3000);  // 每3秒尝试点击一次
+
+        iframe.onload = function() {
+            var player = iframe.contentWindow.document.querySelector('button[data-action="play"]');
+            if (player) {
+                player.click(); // 初始加载时尝试点击
+            }
         };
-    </script>
-    
-    </body>
-    </html>
+    };
+</script>
+
+</body>
+</html>
 
 
 
 
-    
+
