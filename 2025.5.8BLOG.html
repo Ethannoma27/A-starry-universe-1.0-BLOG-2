@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>共振跳动效果网页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+    /* 页面基础样式 */
+    body {
+        height: 100vh;
+        background: linear-gradient(45deg, #7a3dff, #ff6a00); /* 紫色到橙色的渐变 */
+        background-size: 300% 300%;
+        animation: gradientShift 10s ease infinite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        flex-direction: column;
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* 背景：波动效果，强烈震动感 */
+    .background-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        animation: waveEffect 1s linear infinite;
+        z-index: 1;
+    }
+
+    @keyframes waveEffect {
+        0% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+        50% {
+            transform: scale(1.1);
+            opacity: 0.4;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+    }
+
+    /* 现代化音乐播放器样式 */
+    .music-player-container {
+        width: 400px;
+        height: 150px;
+        background: #1d1f27;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 2;
+    }
+
+    .music-player {
+        width: 100%;
+        height: 100%;
+        background: none;
+        border: none;
+    }
+
+    /* 控制部分 */
+    .controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+    }
+
+    .play-pause {
+        font-size: 36px;
+        color: #fff;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .play-pause:hover {
+        transform: scale(1.2);
+    }
+
+    /* 进度条 */
+    .progress-container {
+        width: 100%;
+        height: 5px;
+        background: #444;
+        border-radius: 5px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .progress-bar {
+        height: 100%;
+        background: #ff6a00;
+        border-radius: 5px;
+    }
+
+    /* 音量控制 */
+    .volume-control {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    .volume-slider {
+        width: 100px;
+        margin-left: 10px;
+    }
+
+    /* 播放器名称和封面 */
+    .track-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        color: #fff;
+    }
+
+    .track-name {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .track-artist {
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    /* 动态效果 */
+    @keyframes glowing {
+        0% { text-shadow: 0 0 10px #ff6a00, 0 0 20px #ff6a00, 0 0 30px #ff6a00, 0 0 40px #ff6a00; }
+        50% { text-shadow: 0 0 20px #ff6a00, 0 0 30px #ff6a00, 0 0 40px #ff6a00, 0 0 50px #ff6a00; }
+        100% { text-shadow: 0 0 10px #ff6a00, 0 0 20px #ff6a00, 0 0 30px #ff6a00, 0 0 40px #ff6a00; }
+    }
+
+    .track-name {
+        animation: glowing 1.5s ease-in-out infinite alternate;
+    }
+
+    /* 中层：文字震动效果 */
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .element {
+        font-size: 6rem;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+        animation: shakeEffect 1s ease-in-out infinite;
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .element:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .element:nth-child(2) {
+        animation-delay: 0.5s;
+    }
+
+    .element:nth-child(3) {
+        animation-delay: 1s;
+    }
+
+    @keyframes shakeEffect {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        25% {
+            transform: translateY(-20px);
+        }
+        50% {
+            transform: translateY(20px);
+        }
+        75% {
+            transform: translateY(-20px);
+        }
+    }
+
+    /* 前景层：动态粒子，跳动扩散 */
+    .particle {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        animation: bounceEffect 2s ease-in-out infinite;
+        z-index: 3;
+    }
+
+    @keyframes bounceEffect {
+        0% {
+            transform: translateY(0);
+            opacity: 0.8;
+        }
+        50% {
+            transform: translateY(-30px);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 0.8;
+        }
+    }
+</style>
+
+
+</head>
+<body>
+    <!-- 背景层 -->
+    <div class="background-layer"></div>
+
+
+<!-- 现代化音乐播放器 -->
+<div class="music-player-container">
+    <!-- 播放器封面和歌曲信息 -->
+    <div class="track-info">
+        <div class="track-name">Counting Stars</div>
+        <div class="track-artist">共和时代</div>
+    </div>
+
+    <!-- 控制部分 -->
+    <div class="controls">
+        <span class="play-pause">&#9658;</span> <!-- 播放按钮 -->
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 0%;"></div> <!-- 进度条 -->
+        </div>
+    </div>
+
+    <!-- 音量控制 -->
+    <div class="volume-control">
+        <span>🔊</span>
+        <input type="range" class="volume-slider" min="0" max="100" value="50">
+    </div>
+</div>
+
+<!-- 音乐播放器 -->
+<audio class="music-player" style="display: none;">
+    <source src="https://er-sycdn.kuwo.cn/d488117c7b7c317a9e49b75a1dc0e857/681c2235/resource/30106/trackmedia/M800001tzRyW0xZxWj.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- 中层：文字元素 -->
+<div class="container">
+    <div class="element">上层</div>
+    <div class="element">中产</div>
+    <div class="element">底层</div>
+</div>
+
+<!-- 动态粒子 -->
+<script>
+    // 动态生成粒子
+    function generateParticles() {
+        for (let i = 0; i < 100; i++) {
+            let particle = document.createElement("div");
+            particle.classList.add("particle");
+            let size = Math.random() * 5 + 5;
+            particle.style.width = size + "px";
+            particle.style.height = size + "px";
+            particle.style.animationDuration = (Math.random() * 2 + 1) + "s";
+            particle.style.left = Math.random() * 100 + "vw";
+            particle.style.top = Math.random() * 100 + "vh";
+            document.body.appendChild(particle);
+        }
+    }
+
+    // 页面加载时生成粒子
+    window.onload = generateParticles;
+
+    // 获取播放按钮和音频播放器
+    const playPauseButton = document.querySelector('.play-pause');
+    const audioPlayer = document.querySelector('.music-player');
+    const progressBar = document.querySelector('.progress-bar');
+
+    // 设置按钮的点击事件
+    playPauseButton.addEventListener('click', () => {
+        if (audioPlayer.paused) {
+            audioPlayer.play(); // 播放音频
+            playPauseButton.innerHTML = '⏸'; // 改为暂停符号
+        } else {
+            audioPlayer.pause(); // 暂停音频
+            playPauseButton.innerHTML = '&#9658;'; // 改为播放符号
+        }
+    });
+
+    // 音频播放时更新进度条
+    audioPlayer.addEventListener('timeupdate', () => {
+        const progressPercentage = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progressBar.style.width = progressPercentage + '%';
+    });
+</script>
+
+
+</body>
+</html>
+
