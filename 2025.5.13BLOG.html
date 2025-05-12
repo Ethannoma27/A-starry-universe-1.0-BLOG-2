@@ -70,16 +70,21 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
-         .epoch-log {
+   
+     .epoch-log {
     position: absolute;
-    bottom: 115px;  /* 往上移动 */
-    right: 100px;   /* 往左移动 */
+    bottom: 415px; /* 往上移动，减少 bottom 的值 */
+    right: 415px;  /* 往左移动，减少 right 的值 */
     font-size: 0.9rem;
     color: #888;
     background-color: rgba(255, 255, 255, 0.75);
     padding: 5px 12px;
     border-radius: 5px;
+    width: auto;  /* 自动宽度，背景会根据内容自适应 */
+    white-space: nowrap;  /* 防止换行，保持在一行内 */
+    display: inline-block;  /* 使元素根据内容自适应宽度 */
 }
+
 
 
         footer {
