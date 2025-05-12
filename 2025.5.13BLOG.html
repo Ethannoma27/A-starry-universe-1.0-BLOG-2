@@ -71,20 +71,24 @@
         }
 
    
-     .epoch-log {
+     
+        .content {
+    position: relative;  /* 让 .epoch-log 相对这个容器定位 */
+}
+
+.epoch-log {
     position: absolute;
-    bottom: 415px; /* 往上移动，减少 bottom 的值 */
-    right: 415px;  /* 往左移动，减少 right 的值 */
+    bottom: 30px; /* 调整为相对 .content 容器底部的位置 */
+    right: 30px;  /* 调整为相对 .content 容器右边的位置 */
     font-size: 0.9rem;
     color: #888;
     background-color: rgba(255, 255, 255, 0.75);
     padding: 5px 12px;
     border-radius: 5px;
     width: auto;  /* 自动宽度，背景会根据内容自适应 */
-    white-space: nowrap;  /* 防止换行，保持在一行内 */
-    display: inline-block;  /* 使元素根据内容自适应宽度 */
+    white-space: nowrap;  /* 防止换行 */
+    display: inline-block;  /* 根据内容宽度自适应 */
 }
-
 
 
         footer {
@@ -103,7 +107,7 @@
 </header>
 
 <div class="content">
-    <h2>突破数字循环：复制游戏会让我们迷失自我掌控的秩序</h2>
+    <h2>寻找心智解放：警惕复制游戏让我们迷失自我掌控的秩序</h2>
     <p>数字世界的重复行为使我们失去了对生活的控制，依赖反馈机制让我们陷入无休止的循环。意识到这一点是打破循环的第一步。</p>
     <p>真正的自由不是逃离数字世界，而是能够掌控其中的节奏，不再让短期满足决定我们的生活。</p>
 
