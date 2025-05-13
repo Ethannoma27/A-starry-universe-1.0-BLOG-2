@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="多巴胺页面 - 温和的互动体验，柔和的反馈和细腻的设计，带来愉悦的心灵抚慰。">
+    <title>诗意多巴胺页面</title>
+    <style>
+        /* 基本样式 */
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            color: #444;
+            display: flex;
+            justify-content: center;  /* 水平居中内容 */
+            align-items: flex-start;  /* 将内容靠近顶部 */
+            min-height: 100vh;  /* 确保页面最小高度为视口高度 */
+            overflow: hidden;
+        }
+
+        /* 包裹所有内容的容器 */
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 100%;
+            max-height: 100%;
+            margin-top: 0px;  /* 去掉上方的空白 */
+        }
+
+        /* 页眉样式 */
+        header {
+            background-color: #1D4ED8; /* 酷炫的电光蓝背景 */ 
+            padding: 20px 30px;  /* 增加 padding */
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 15px 15px;
+            width: 100%;
+            font-size: 2.5rem;  /* 增大字体 */
+            color: white;  /* 改为白色字体 */
+            font-weight: bold; /* 增加字体粗细 */
+        }
+
+        /* 页面内容部分样式 */
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            padding: 20px;
+            margin-top: 10px;  /* 减少顶部 margin，避免多余空白 */
+        }
+
+        .content h2 {
+            font-size: 2rem;
+            color: #5f6368;
+            margin-top: 10px;  /* 缩小与 header 之间的间距 */
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+            font-style: italic;
+        }
+
+        /* 按钮样式 */
+        .btn {
+            background-color: #d6dde3;
+            color: #3b4a6b;
+            padding: 18px 36px;
+            font-size: 1.1rem;
+            border: 2px solid #3b4a6b;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transform: scale(1);
+            outline: none;
+        }
+
+        .btn:hover {
+            background-color: #c5d0d9;
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        /* 动态反馈消息 */
+        .feedback {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #7d8b91;
+            display: none;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 图片滚动容器样式 */
+        .image-container {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            background-color: #f0f4f8;
+        }
+
+        /* 图片样式 */
+        .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;  /* 保证图片不变形，覆盖容器 */
+            opacity: 0; /* 默认隐藏图片 */
+            transition: opacity 1s ease-in-out; /* 添加渐变过渡 */
+            position: absolute; /* 使图片绝对定位 */
+            left: 50%; /* 定位到容器的水平中间 */
+            transform: translateX(-50%); /* 水平居中 */
+        }
+
+        /* 显示当前图片 */
+        .active {
+            opacity: 1; /* 显示当前图片 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 自动播放音乐 -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://sf5-hl-cdn-tos.douyinstatic.com/obj/ies-music/7059164177755130660.mp3" type="audio/mp3">
+        您的浏览器不支持音频播放。
+    </audio>
+
+    <!-- 包裹所有内容的容器 -->
+    <div class="wrapper">
+        <header>
+            多巴胺自主投喂 哈哈哈
+        </header>
+
+        <div class="content">
+            <h2>每一次互动，都有细腻的心灵回应</h2>
+            <p>轻触按钮，感受心底那份微妙的愉悦。每一次投喂，都是一场温柔的探索，带来片刻的宁静与满足。</p>
+
+            <button class="btn" id="dopamineButton">轻触投喂</button>
+
+            <div class="feedback" id="feedbackMessage">
+                哎呦，不错 ！
+            </div>
+
+            <!-- 图片滚动容器 -->
+            <div class="image-container" id="imageContainer">
+                <img src="images/1.png" alt="Image 1" class="image">
+                <img src="images/2.png" alt="Image 2" class="image">
+                <img src="images/3.png" alt="Image 3" class="image">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取按钮和反馈元素
+        const dopamineButton = document.getElementById('dopamineButton');
+        const feedbackMessage = document.getElementById('feedbackMessage');
+        const images = document.querySelectorAll('.image');
+        const audio = document.getElementById('backgroundMusic');
+        let currentIndex = 0;
+
+        // 监听按钮点击事件
+        dopamineButton.addEventListener('click', function() {
+            // 显示反馈消息
+            feedbackMessage.style.display = 'block';
+
+            // 设置计时器，5秒后隐藏反馈
+            setTimeout(function() {
+                feedbackMessage.style.display = 'none';
+            }, 5000);  // 5秒后隐藏
+
+            // 播放音频
+            audio.play();
+        });
+
+        // 自动切换图片的功能，每5秒切换一次
+        function changeImage() {
+            // 移除所有图片的 active 类
+            images.forEach(img => img.classList.remove('active'));
+
+            // 添加当前图片的 active 类
+            images[currentIndex].classList.add('active');
+            
+            // 输出调试信息
+            console.log('当前显示的图片索引:', currentIndex);
+
+            // 更新索引，循环回到第一张
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+
+        // 初始化时显示第一张图片
+        changeImage();
+
+        // 设置每5秒切换一次图片
+        setInterval(changeImage, 5000);
+    </script>
+
+</body>
+</html>
+
+
