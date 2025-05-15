@@ -3,64 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>乘风2025</title>
+    <title>向云端</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&family=Dancing+Script&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
-  
     <style>
-      body {
-    font-family: 'Quicksand', sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background: linear-gradient(to bottom, #e2f7ff, #d1c6ff); /* 修改背景色 */
-    color: #4b4b5d; /* 修改字体颜色 */
-    background-image: url('images/background2.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-}
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #e0e7ff, #c8c7ff); 
+            color: #5a5a5a; 
+            background-image: url('images/background1.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
 
-body::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    filter: blur(4px);
-    pointer-events: none;
-    z-index: 0;
-}
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            filter: blur(4px);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-header {
-    background: linear-gradient(to right, rgba(100, 160, 255, 0.6), rgba(180, 120, 255, 0.55));
-    padding: 30px 20px;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    border-bottom: 4px solid rgba(180, 120, 255, 0); /* 默认无边框 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: border-bottom 0.6s ease-in-out; /* 添加渐变过渡 */
-}
-h1 {
-    font-family: 'Dancing Script', cursive; /* 轻盈感的字体 */
-    font-size: 4.5em;  /* 增加字体大小 */
-    margin: 0;
-    letter-spacing: 3px; /* 适当增加字母间距 */
-    text-transform: uppercase; /* 字母大写 */
-    color: #9a7af0;  /* 柔和的紫色，既清新又优雅 */
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); /* 柔和的阴影效果 */
-    transform: scale(1.05); /* 稍微放大标题 */
-    transition: transform 0.3s ease-in-out; /* 放大效果的过渡 */
-}
+        header {
+            background: linear-gradient(to right, rgba(130, 160, 255, 0.6), rgba(200, 100, 255, 0.55)); 
+            padding: 30px 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 4px solid rgba(200, 100, 255, 0.6);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
 
-h1:hover {
-    transform: scale(1.1); /* 鼠标悬停时放大标题 */
-}
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em; 
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #C4A7FF;
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+        }
 
-    
         p {
             font-size: 1.3em;
             margin-top: 20px;
@@ -69,10 +61,10 @@ h1:hover {
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            color: #49467f; /* 修改段落文字颜色 */
+            color: #3E3B6D;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
-    
+
         .content {
             padding: 30px 20px;
             background-color: rgba(255, 255, 255, 0.85);
@@ -82,7 +74,7 @@ h1:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease-in-out;
         }
-    
+
         .video-container {
             margin-top: 20px;
             max-width: 100%;
@@ -94,7 +86,7 @@ h1:hover {
             background-color: #fff;
             display: none;
         }
-    
+
         .fallback-content {
             margin-top: 20px;
             position: relative;
@@ -105,7 +97,7 @@ h1:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: none;
         }
-    
+
         .placeholder-image {
             position: absolute;
             top: 0;
@@ -115,13 +107,13 @@ h1:hover {
             object-fit: cover;
             border-radius: 12px;
         }
-    
+
         .play-button {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, #6675ff, #a79aff); /* 修改按钮渐变色 */
+            background: linear-gradient(135deg, #6a5af3, #a79aff);
             color: white;
             padding: 20px 30px;
             border-radius: 50px;
@@ -133,11 +125,11 @@ h1:hover {
             opacity: 0.7;
             transition: opacity 0.3s ease-in-out;
         }
-    
+
         .play-button:hover {
             opacity: 1;
         }
-    
+
         iframe {
             position: absolute;
             top: 0;
@@ -147,9 +139,9 @@ h1:hover {
             border-radius: 12px;
             border: none;
         }
-    
+
         footer {
-            background-color: #d1c6ff; /* 修改页脚背景色 */
+            background-color: #c8c7ff; 
             color: white;
             padding: 30px 20px;
             font-size: 1.1em;
@@ -161,48 +153,46 @@ h1:hover {
             width: 100%;
             position: relative;
         }
-    
+
         footer p {
             margin: 0;
             font-size: 1em;
             font-weight: lighter;
         }
-    
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.4em;
             }
-    
+
             .content {
                 margin: 20px auto;
                 padding: 20px;
             }
-    
+
             .video-container {
                 margin: 20px auto;
                 padding-top: 56.25%;
             }
         }
-    
+
         @media (max-width: 480px) {
             .video-container {
                 max-width: 95%;
             }
         }
     </style>
-    
-
 </head>
 <body>
 
     <header>
-        <h1>乘风2025</h1>
-        <p>一场充满挑战与成长的音乐与舞蹈盛宴，带你领略女性力量与梦想的无限可能</p> 
+        <h1>向云端</h1>
+        <p>一首充满哲思与情感的歌曲，引领你思索爱情与信仰的深刻联系。</p> 
     </header>
 
     <div class="content">
         <!-- 视频播放器容器 -->
-        <div class="video-container" id="video-container"> 
+        <div class="video-container" id="video-container">
             <div id="player"></div>
         </div>
 
@@ -215,14 +205,13 @@ h1:hover {
         </div>
 
         <div class="text">
-            <p>《乘风2025》是一场充满力量与突破的综艺盛宴，特别是在其中那句“乘风破浪，超越极限！”传达了对女性挑战自我、勇敢追求卓越的坚定信念。</p> 
-            <p>节目中，展现了许多女性以无畏姿态迎接挑战，突破自我界限，追求卓越。每个瞬间都充满了力量与激情，鼓励观众相信，无论面对什么困难，都能乘风破浪，迎接辉煌。</p>
+            <p>《向云端》是一首充满深情与哲思的歌曲，特别是在其中那句“神啊，你在哪？”传达了对爱情与信仰的深刻思考与命运臣服。</p>
+            <p>歌词中，那种臣服感与渴望，仿佛在追寻一种超越世俗的力量。整首歌通过简洁的旋律，带着一种神秘的气息，引发对信仰与爱的沉思。</p>
         </div>
     </div>
 
-
     <footer>
-        <p>© 2025 《乘风2025》页面背景风格 | 由 Epochfuture 团队制作</p>
+        <p>© 2025 《向云端》页面背景风格 | 由 Epochfuture 团队制作</p>
     </footer>
 
     <script>
@@ -243,21 +232,21 @@ h1:hover {
                 console.error('IP 信息获取失败:', error);
             });
         }
-    
+
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    
+
         var player;
         var videoLoaded = false;
-    
+
         function onYouTubeIframeAPIReady() {
             console.log('YouTube API loaded');
             player = new YT.Player('player', {
                 height: '360',
                 width: '640',
-                videoId: 'nfeY0uE3u3Y', // 更新了视频 ID
+                videoId: 'nfeY0uE3u3Y',
                 playerVars: {
                     autoplay: 1,
                     controls: 1,
@@ -271,28 +260,28 @@ h1:hover {
                 }
             });
         }
-    
+
         function onVideoReady(event) {
             console.log('视频已准备好');
             document.getElementById('fallback-content').style.display = 'none';
             document.getElementById('video-container').style.display = 'block';
         }
-    
+
         function onVideoError(event) {
             console.log('视频加载失败，显示占位图片和播放按钮');
             document.getElementById('fallback-content').style.display = 'block';
             document.getElementById('video-container').style.display = 'none';
         }
-    
+
         function loadVideo() {
             if (!videoLoaded) {
-                player.loadVideoById('nfeY0uE3u3Y'); // 更新了视频 ID
+                player.loadVideoById('nfeY0uE3u3Y');
                 videoLoaded = true;
                 document.getElementById('fallback-content').style.display = 'none';
                 document.getElementById('video-container').style.display = 'block';
             }
         }
-    
+
         // 解除静音按钮
         document.getElementById('unmuteButton').addEventListener('click', function() {
             if (player) {
@@ -302,11 +291,12 @@ h1:hover {
             }
         });
     </script>
-    
 
 </body>
-
 </html>
+
+
+
 
 
 
