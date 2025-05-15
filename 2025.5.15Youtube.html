@@ -1,302 +1,152 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>向云端</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&family=Dancing+Script&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
-    <style>
-        body {
-            font-family: 'Quicksand', sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background: linear-gradient(to bottom, #e0e7ff, #c8c7ff); 
-            color: #5a5a5a; 
-            background-image: url('images/background1.png'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>向云端</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom, #e0e7ff, #c8c7ff);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
 
-        body::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            filter: blur(4px);
-            pointer-events: none;
-            z-index: 0;
-        }
+    header {
+      padding: 30px 20px;
+      background: linear-gradient(to right, rgba(130, 160, 255, 0.6), rgba(200, 100, 255, 0.55));
+      color: white;
+    }
 
-        header {
-            background: linear-gradient(to right, rgba(130, 160, 255, 0.6), rgba(200, 100, 255, 0.55)); 
-            padding: 30px 20px;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            border-bottom: 4px solid rgba(200, 100, 255, 0.6);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3em;
+      margin: 0;
+    }
 
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3em; 
-            margin: 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #C4A7FF;
-            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
-        }
+    .content {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      margin-top: 20px;
+    }
 
-        p {
-            font-size: 1.3em;
-            margin-top: 20px;
-            font-weight: lighter;
-            line-height: 1.8;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #3E3B6D;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
+    .video-container {
+      position: relative;
+      padding-top: 56.25%;
+      margin-top: 20px;
+    }
 
-        .content {
-            padding: 30px 20px;
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
-            max-width: 800px;
-            margin: 20px auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease-in-out;
-        }
+    #player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-        .video-container {
-            margin-top: 20px;
-            max-width: 100%;
-            position: relative;
-            overflow: hidden;
-            padding-top: 56.25%;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            display: none;
-        }
+    .fallback-content {
+      display: none;
+      margin-top: 20px;
+      position: relative;
+      padding-top: 56.25%;
+    }
 
-        .fallback-content {
-            margin-top: 20px;
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            background: #f5f5f5;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
+    .fallback-content img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
 
-        .placeholder-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #6a5af3;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 30px;
+      font-size: 20px;
+      text-decoration: none;
+    }
 
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, #6a5af3, #a79aff);
-            color: white;
-            padding: 20px 30px;
-            border-radius: 50px;
-            font-size: 24px;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            user-select: none;
-            opacity: 0.7;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .play-button:hover {
-            opacity: 1;
-        }
-
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-            border: none;
-        }
-
-        footer {
-            background-color: #c8c7ff; 
-            color: white;
-            padding: 30px 20px;
-            font-size: 1.1em;
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            width: 100%;
-            position: relative;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 1em;
-            font-weight: lighter;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.4em;
-            }
-
-            .content {
-                margin: 20px auto;
-                padding: 20px;
-            }
-
-            .video-container {
-                margin: 20px auto;
-                padding-top: 56.25%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .video-container {
-                max-width: 95%;
-            }
-        }
-    </style>
+    footer {
+      background: #c8c7ff;
+      padding: 20px;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>向云端</h1>
-        <p>一首充满哲思与情感的歌曲，引领你思索爱情与信仰的深刻联系。</p> 
-    </header>
+  <header>
+    <h1>向云端</h1>
+    <p>一首充满哲思与情感的歌曲，引领你思索爱情与信仰的深刻联系。</p>
+  </header>
 
-    <div class="content">
-        <!-- 视频播放器容器 -->
-        <div class="video-container" id="video-container">
-            <div id="player"></div>
-        </div>
-
-        <!-- 占位图片，当视频无法加载时显示 -->
-        <div class="fallback-content" id="fallback-content">
-            <img src="images/placeholder.png" alt="视频加载失败" class="placeholder-image">
-            <a href="https://www.youtube.com/watch?v=nfeY0uE3u3Y" target="_blank" class="play-button">
-                &#9654; 跳转至视频
-            </a>
-        </div>
-
-        <div class="text">
-            <p>《向云端》是一首充满深情与哲思的歌曲，特别是在其中那句“神啊，你在哪？”传达了对爱情与信仰的深刻思考与命运臣服。</p>
-            <p>歌词中，那种臣服感与渴望，仿佛在追寻一种超越世俗的力量。整首歌通过简洁的旋律，带着一种神秘的气息，引发对信仰与爱的沉思。</p>
-        </div>
+  <div class="content">
+    <div class="video-container" id="video-container">
+      <div id="player"></div>
     </div>
 
-    <footer>
-        <p>© 2025 《向云端》页面背景风格 | 由 Epochfuture 团队制作</p>
-    </footer>
+    <div class="fallback-content" id="fallback-content">
+      <img src="images/placeholder.png" alt="视频加载失败">
+      <a href="https://www.youtube.com/watch?v=nfeY0uE3u3Y" target="_blank" class="play-button">▶ 跳转至视频</a>
+    </div>
 
-    <script>
-        // 使用第三方 API 来检测用户 IP 是否在中国
-        function checkIP() {
-            fetch('https://ipinfo.io/json?token=YOUR_API_KEY')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                if (data.country === "CN") {
-                    document.getElementById('fallback-content').style.display = 'block';
-                    document.getElementById('video-container').style.display = 'none';
-                } else {
-                    loadYouTubeVideo();
-                }
-            })
-            .catch(error => {
-                console.error('IP 信息获取失败:', error);
-            });
-        }
+    <p>《向云端》是一首充满深情与哲思的歌曲，尤其是那句“神啊，你在哪？”，深刻表达了对命运与信仰的探索。</p>
+  </div>
 
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  <footer>
+    <p>© 2025 《向云端》页面背景风格 | 由 Epoch 团队制作</p>
+  </footer>
 
-        var player;
-        var videoLoaded = false;
+  <!-- 加载 YouTube Iframe API -->
+  <script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        function onYouTubeIframeAPIReady() {
-            console.log('YouTube API loaded');
-            player = new YT.Player('player', {
-                height: '360',
-                width: '640',
-                videoId: 'nfeY0uE3u3Y',
-                playerVars: {
-                    autoplay: 1,
-                    controls: 1,
-                    mute: 1, // 默认静音
-                    showinfo: 0,
-                    rel: 0
-                },
-                events: {
-                    'onError': onVideoError,
-                    'onReady': onVideoReady
-                }
-            });
-        }
+    var player;
 
-        function onVideoReady(event) {
-            console.log('视频已准备好');
-            document.getElementById('fallback-content').style.display = 'none';
-            document.getElementById('video-container').style.display = 'block';
-        }
-
-        function onVideoError(event) {
-            console.log('视频加载失败，显示占位图片和播放按钮');
-            document.getElementById('fallback-content').style.display = 'block';
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: 'nfeY0uE3u3Y',
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 1,
+          rel: 0,
+          showinfo: 0
+        },
+        events: {
+          'onReady': function (event) {
+            event.target.playVideo(); // 确保播放
+          },
+          'onError': function () {
             document.getElementById('video-container').style.display = 'none';
+            document.getElementById('fallback-content').style.display = 'block';
+          }
         }
-
-        function loadVideo() {
-            if (!videoLoaded) {
-                player.loadVideoById('nfeY0uE3u3Y');
-                videoLoaded = true;
-                document.getElementById('fallback-content').style.display = 'none';
-                document.getElementById('video-container').style.display = 'block';
-            }
-        }
-
-        // 解除静音按钮
-        document.getElementById('unmuteButton').addEventListener('click', function() {
-            if (player) {
-                player.unMute();
-                this.style.display = 'none';
-                document.getElementById('mute-warning').style.display = 'none';  // 隐藏提示
-            }
-        });
-    </script>
+      });
+    }
+  </script>
 
 </body>
+
+
 </html>
-
-
-
 
 
 
